@@ -1,0 +1,3873 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seder Palms Restaurant — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16261F;
+    --palm:#2B4A3A;
+    --palm-light:#3E6650;
+    --sand:#EDE7DA;
+    --brass:#B98A3D;
+    --brass-light:#D8AE6B;
+    --stone:#6E7568;
+    --white:#FFFFFF;
+    --card-shadow: 0 1px 2px rgba(22,38,31,0.06), 0 4px 12px rgba(22,38,31,0.05);
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  a{color:inherit;}
+
+  /* Header */
+  header{
+    background:var(--palm);
+    color:var(--sand);
+    padding:22px 20px 18px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+  }
+  .header-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .brand{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .brand-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.5rem;
+    letter-spacing:-0.01em;
+    line-height:1.1;
+    color:var(--white);
+  }
+  .welcome-line{
+    font-size:0.82rem;
+    color:var(--brass-light);
+    font-weight:500;
+    margin-top:4px;
+  }
+  .lang-toggle{
+    display:flex;
+    gap:4px;
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:3px;
+    flex-shrink:0;
+  }
+  .lang-btn{
+    border:none;
+    background:transparent;
+    color:var(--sand);
+    font-family:'Inter',sans-serif;
+    font-size:0.72rem;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:16px;
+    cursor:pointer;
+    opacity:0.6;
+    transition:all 0.2s ease;
+  }
+  .lang-btn.active{
+    background:var(--brass);
+    color:var(--ink);
+    opacity:1;
+  }
+
+  /* Frond divider - signature element */
+  .frond-divider{
+    display:flex;
+    justify-content:center;
+    padding:18px 0 10px;
+  }
+  .frond-divider svg{
+    width:64px;
+    height:14px;
+    opacity:0.55;
+  }
+
+  /* Tabs */
+  .tabs{
+    position:sticky;
+    top:88px;
+    z-index:15;
+    background:var(--sand);
+    display:flex;
+    gap:8px;
+    padding:10px 16px;
+    overflow-x:auto;
+    border-bottom:1px solid rgba(22,38,31,0.08);
+  }
+  .tab{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:0.88rem;
+    padding:9px 18px;
+    border-radius:22px;
+    border:1.5px solid var(--palm);
+    background:transparent;
+    color:var(--palm);
+    white-space:nowrap;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .tab.active{
+    background:var(--palm);
+    color:var(--white);
+  }
+
+  /* Category */
+  .category-block{display:none;padding:18px 16px 6px;}
+  .category-block.active{display:block;}
+  .category-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--palm);
+    margin:0 0 14px 2px;
+    letter-spacing:0.01em;
+  }
+
+  /* Item card */
+  .item-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:var(--card-shadow);
+    display:flex;
+    gap:12px;
+    padding:12px;
+    margin-bottom:12px;
+  }
+  .item-photo{
+    width:84px;
+    height:84px;
+    flex-shrink:0;
+    border-radius:10px;
+    position:relative;
+    overflow:hidden;
+    background:var(--palm-light);
+  }
+  .item-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .item-photo .ph-label{
+    display:none;
+  }
+  .item-photo.placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, var(--palm-light), var(--palm));
+  }
+  .item-photo.placeholder img{
+    display:none;
+  }
+  .item-photo.placeholder .ph-label{
+    display:block;
+    color:rgba(255,255,255,0.55);
+    font-size:0.6rem;
+    text-align:center;
+    line-height:1.2;
+    padding:6px;
+    font-weight:600;
+  }
+  .ref-badge{
+    position:absolute;
+    bottom:3px;
+    left:3px;
+    right:3px;
+    font-size:0.5rem;
+    font-weight:700;
+    letter-spacing:0.02em;
+    text-align:center;
+    color:#fff;
+    background:rgba(22,38,31,0.72);
+    border-radius:4px;
+    padding:2px 3px;
+    line-height:1.15;
+  }
+  .item-body{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+  }
+  .item-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .item-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--ink);
+    line-height:1.25;
+  }
+  .item-price{
+    text-align:right;
+    flex-shrink:0;
+  }
+  .price-sar{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    color:var(--brass);
+    white-space:nowrap;
+  }
+  .price-usd{
+    font-size:0.68rem;
+    color:var(--stone);
+  }
+  .item-desc{
+    font-size:0.78rem;
+    color:var(--stone);
+    line-height:1.4;
+    margin:4px 0 8px;
+  }
+  .tags{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .tag{
+    font-size:0.65rem;
+    font-weight:600;
+    padding:3px 8px;
+    border-radius:10px;
+    background:var(--sand);
+    color:var(--palm);
+    letter-spacing:0.02em;
+  }
+  .tag.spicy{background:#FBE7DA;color:#A8451B;}
+  .tag.veg{background:#E4EFE2;color:#3B6B33;}
+
+  .placeholder-note{
+    font-size:0.78rem;
+    color:var(--stone);
+    text-align:center;
+    padding:30px 20px;
+  }
+
+  /* Filters */
+  .filter-bar{
+    display:flex;
+    gap:8px;
+    padding:2px 16px 12px;
+    overflow-x:auto;
+    background:var(--sand);
+  }
+  .filter-chip{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.76rem;
+    padding:7px 12px;
+    border-radius:18px;
+    border:1.5px solid rgba(22,38,31,0.18);
+    background:var(--white);
+    color:var(--stone);
+    white-space:nowrap;
+    cursor:pointer;
+    transition:all 0.15s ease;
+    flex-shrink:0;
+  }
+  .filter-chip .icon{
+    font-size:0.72rem;
+    line-height:1;
+  }
+  .filter-chip[data-state="include"]{
+    background:#E4EFE2;
+    border-color:#3B6B33;
+    color:#2E5228;
+  }
+  .filter-chip[data-state="exclude"]{
+    background:#FBE2DD;
+    border-color:#A8451B;
+    color:#8C3A17;
+  }
+  .filter-hint{
+    font-size:0.68rem;
+    color:var(--stone);
+    padding:0 16px 8px;
+    font-style:italic;
+  }
+  .item-card.hidden-by-filter{display:none;}
+  .no-results{
+    text-align:center;
+    color:var(--stone);
+    font-size:0.82rem;
+    padding:26px 16px;
+    display:none;
+  }
+  .no-results.show{display:block;}
+
+  footer{
+    text-align:center;
+    padding:24px 20px 10px;
+    color:var(--stone);
+    font-size:0.72rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="brand">
+      <div class="brand-name" data-i18n="brandName">Seder Palms Restaurant</div>
+      <div class="welcome-line" data-i18n="welcome">Fresh, modern flavors at Seder Palms Restaurant</div>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ar">AR</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
+  </div>
+  <div class="frond-divider">
+    <svg viewBox="0 0 64 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 7 C 14 -2, 24 -2, 32 7 C 40 -2, 50 -2, 62 7" stroke="#D8AE6B" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="food" data-i18n-tab="food">Food</button>
+  <button class="tab" data-tab="dessert" data-i18n-tab="dessert">Dessert</button>
+  <button class="tab" data-tab="beverages" data-i18n-tab="beverages">Beverages</button>
+</nav>
+
+<div class="filter-bar">
+  <button class="filter-chip" data-filter="halal" data-state="any"><span class="icon"></span><span class="label" data-i18n-tag="halal">Halal</span></button>
+  <button class="filter-chip" data-filter="vegetarian" data-state="any"><span class="icon"></span><span class="label" data-i18n-tag="vegetarian">Vegetarian</span></button>
+  <button class="filter-chip" data-filter="seafood" data-state="any"><span class="icon"></span><span class="label" data-i18n-tag="seafood">Seafood</span></button>
+  <button class="filter-chip" data-filter="spicy" data-state="any"><span class="icon"></span><span class="label" data-i18n-tag="spicy">Spicy</span></button>
+</div>
+<div class="filter-hint" data-i18n="filterHint">Tap once to show only, tap again to hide, tap again to reset</div>
+
+<main>
+  <section class="category-block" id="food">
+    <h2 class="category-title" data-i18n-cat="Breakfast">Breakfast</h2>
+    <div class="item-card" data-tags="halal" data-slug="american-steak-breakfast">
+      <div class="item-photo placeholder" data-slug="american-steak-breakfast">
+        <img src="photos/american-steak-breakfast.jpg" alt="American Steak Breakfast" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">American Steak Breakfast</div>
+          <div class="item-price">
+            <div class="price-sar">47 SAR</div>
+            <div class="price-usd">&asymp; $12.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Steak, over easy egg, mushroom, grill tomato, roasted potato, toast bread, coffee.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="english-breakfast-platter">
+      <div class="item-photo placeholder" data-slug="english-breakfast-platter">
+        <img src="photos/english-breakfast-platter.jpg" alt="English Breakfast Platter" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">English Breakfast Platter</div>
+          <div class="item-price">
+            <div class="price-sar">37 SAR</div>
+            <div class="price-usd">&asymp; $9.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Fried egg, grilled hot dog, saute mushroom, baked beans, bacon, grilled tomato, toast, coffee.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian spicy" data-slug="hash-brown-egg-benedict">
+      <div class="item-photo placeholder" data-slug="hash-brown-egg-benedict">
+        <img src="photos/hash-brown-egg-benedict.jpg" alt="Hash Brown Egg Benedict" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Hash Brown Egg Benedict</div>
+          <div class="item-price">
+            <div class="price-sar">36 SAR</div>
+            <div class="price-usd">&asymp; $9.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Crispy hash brown eggs benedict, hollandaise sauce and sriracha mayo.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="avocado-toast-with-poached-egg">
+      <div class="item-photo placeholder" data-slug="avocado-toast-with-poached-egg">
+        <img src="photos/avocado-toast-with-poached-egg.jpg" alt="Avocado Toast With Poached Egg" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Avocado Toast With Poached Egg</div>
+          <div class="item-price">
+            <div class="price-sar">38 SAR</div>
+            <div class="price-usd">&asymp; $10.13</div>
+          </div>
+        </div>
+        <div class="item-desc">Guacamole in multigrain bread served with poached egg and horseradish sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="your-choice-omelette">
+      <div class="item-photo placeholder" data-slug="your-choice-omelette">
+        <img src="photos/your-choice-omelette.jpg" alt="Your Choice Omelette" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Your Choice Omelette</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Vegetable or cheese omelette, served with hash brown or toast bread.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="philly-steak-omelette">
+      <div class="item-photo placeholder" data-slug="philly-steak-omelette">
+        <img src="photos/philly-steak-omelette.jpg" alt="Philly Steak Omelette" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Philly Steak Omelette</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Egg, steak, mozzarella cheese, bell peppers &amp; onion.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="egg-any-style">
+      <div class="item-photo placeholder" data-slug="egg-any-style">
+        <img src="photos/egg-any-style.jpg" alt="Egg Any Style" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Egg Any Style</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Eggs cooked any style, served with hash brown, salsa and toast.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="egg-n-bun">
+      <div class="item-photo placeholder" data-slug="egg-n-bun">
+        <img src="photos/egg-n-bun.jpg" alt="Egg N Bun" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Egg N Bun</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Two fried eggs in a brioche bun with caramelized onion, beef bacon, cheese and our special sauce, served with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="chicken-schnitzel">
+      <div class="item-photo placeholder" data-slug="chicken-schnitzel">
+        <img src="photos/chicken-schnitzel.jpg" alt="Chicken Schnitzel" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chicken Schnitzel</div>
+          <div class="item-price">
+            <div class="price-sar">27 SAR</div>
+            <div class="price-usd">&asymp; $7.20</div>
+          </div>
+        </div>
+        <div class="item-desc">Fried chicken, fries, sunny side up egg, hollandaise sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian spicy" data-slug="shakshuka-slider">
+      <div class="item-photo placeholder" data-slug="shakshuka-slider">
+        <img src="photos/shakshuka-slider.jpg" alt="Shakshuka Slider" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Shakshuka Slider</div>
+          <div class="item-price">
+            <div class="price-sar">27 SAR</div>
+            <div class="price-usd">&asymp; $7.20</div>
+          </div>
+        </div>
+        <div class="item-desc">Our homemade shakshuka with feta cheese served in warm mini brioche buns.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Salad">Salad</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="crispy-quinoa-salad">
+      <div class="item-photo placeholder" data-slug="crispy-quinoa-salad">
+        <img src="photos/crispy-quinoa-salad.jpg" alt="Crispy Quinoa Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Crispy Quinoa Salad</div>
+          <div class="item-price">
+            <div class="price-sar">37 SAR</div>
+            <div class="price-usd">&asymp; $9.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Crispy corn salad with feta, pomegranate, bell pepper, edamame, cherry tomato, spring onion and honey mustard vinaigrette.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="cobb-salmon-salad">
+      <div class="item-photo placeholder" data-slug="cobb-salmon-salad">
+        <img src="photos/cobb-salmon-salad.jpg" alt="Cobb Salmon Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Cobb Salmon Salad</div>
+          <div class="item-price">
+            <div class="price-sar">42 SAR</div>
+            <div class="price-usd">&asymp; $11.20</div>
+          </div>
+        </div>
+        <div class="item-desc">Grilled salmon cubes, avocado, blue cheese, bacon, tomato, egg &amp; mixed greens tossed in our vinaigrette.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="signature-steak-salad">
+      <div class="item-photo placeholder" data-slug="signature-steak-salad">
+        <img src="photos/signature-steak-salad.jpg" alt="Signature Steak Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Signature Steak Salad</div>
+          <div class="item-price">
+            <div class="price-sar">36 SAR</div>
+            <div class="price-usd">&asymp; $9.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Arugula leaves, warm potato salad, steak slices, edamame, parmesan cheese, balsamic reduction.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="the-greek-salad">
+      <div class="item-photo placeholder" data-slug="the-greek-salad">
+        <img src="photos/the-greek-salad.jpg" alt="The Greek Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">The Greek Salad</div>
+          <div class="item-price">
+            <div class="price-sar">29 SAR</div>
+            <div class="price-usd">&asymp; $7.73</div>
+          </div>
+        </div>
+        <div class="item-desc">Lettuce, feta cheese, cucumber, olives, tomato, white onion, oregano vinaigrette.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="falafel-salad">
+      <div class="item-photo placeholder" data-slug="falafel-salad">
+        <img src="photos/falafel-salad.jpg" alt="Falafel Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Falafel Salad</div>
+          <div class="item-price">
+            <div class="price-sar">22 SAR</div>
+            <div class="price-usd">&asymp; $5.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Falafel, iceberg, cucumber, tomato, cucumber pickle, parsley, fries, tahina sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="shrimp-cocktail-avocado-salad">
+      <div class="item-photo placeholder" data-slug="shrimp-cocktail-avocado-salad">
+        <img src="photos/shrimp-cocktail-avocado-salad.jpg" alt="Shrimp Cocktail Avocado Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Shrimp Cocktail Avocado Salad</div>
+          <div class="item-price">
+            <div class="price-sar">40 SAR</div>
+            <div class="price-usd">&asymp; $10.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Avocado salsa with de-shelled prawns drizzled with cocktail sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="classic-waldorf-salad">
+      <div class="item-photo placeholder" data-slug="classic-waldorf-salad">
+        <img src="photos/classic-waldorf-salad.jpg" alt="Classic Waldorf Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Classic Waldorf Salad</div>
+          <div class="item-price">
+            <div class="price-sar">28 SAR</div>
+            <div class="price-usd">&asymp; $7.47</div>
+          </div>
+        </div>
+        <div class="item-desc">Apple slices, celery, yogurt, English mustard, lemon juice, grapes, cranberries, baby greens &amp; romaine, candied walnuts.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="exotic-rocca-salad">
+      <div class="item-photo placeholder" data-slug="exotic-rocca-salad">
+        <img src="photos/exotic-rocca-salad.jpg" alt="Exotic Rocca Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Exotic Rocca Salad</div>
+          <div class="item-price">
+            <div class="price-sar">25 SAR</div>
+            <div class="price-usd">&asymp; $6.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Rocca leaves, sundried tomato, grilled halloumi, parmesan served with pomegranate dressing.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="fattoush-salad">
+      <div class="item-photo placeholder" data-slug="fattoush-salad">
+        <img src="photos/fattoush-salad.jpg" alt="Fattoush Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Fattoush Salad</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">A healthy mix of fresh vegetables with toasted bread and pomegranate molasses.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="caesar-chicken-salad">
+      <div class="item-photo placeholder" data-slug="caesar-chicken-salad">
+        <img src="photos/caesar-chicken-salad.jpg" alt="Caesar Chicken Salad" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Caesar Chicken Salad</div>
+          <div class="item-price">
+            <div class="price-sar">26 SAR</div>
+            <div class="price-usd">&asymp; $6.93</div>
+          </div>
+        </div>
+        <div class="item-desc">Grilled chicken, lettuce with Caesar dressing and parmesan.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="hummus">
+      <div class="item-photo placeholder" data-slug="hummus">
+        <img src="photos/hummus.jpg" alt="Hummus" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Hummus</div>
+          <div class="item-price">
+            <div class="price-sar">14 SAR</div>
+            <div class="price-usd">&asymp; $3.73</div>
+          </div>
+        </div>
+        <div class="item-desc">A smooth, creamy blend of chick peas, tahini, garlic, lemon &amp; olive oil served with pita bread.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Main Course">Main Course</h2>
+    <div class="item-card" data-tags="halal" data-slug="grilled-chicken-breast">
+      <div class="item-photo placeholder" data-slug="grilled-chicken-breast">
+        <img src="photos/grilled-chicken-breast.jpg" alt="Grilled Chicken Breast" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Grilled Chicken Breast</div>
+          <div class="item-price">
+            <div class="price-sar">45 SAR</div>
+            <div class="price-usd">&asymp; $12.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Plain grilled chicken breast served with mash potato and vegetable.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="chicken-parmigiana">
+      <div class="item-photo placeholder" data-slug="chicken-parmigiana">
+        <img src="photos/chicken-parmigiana.jpg" alt="Chicken Parmigiana" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chicken Parmigiana</div>
+          <div class="item-price">
+            <div class="price-sar">37 SAR</div>
+            <div class="price-usd">&asymp; $9.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Breaded chicken breast topped with parmesan, turkey ham and marinara sauce with mash potato &amp; veg.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="chicken-marsala-and-mushrooms">
+      <div class="item-photo placeholder" data-slug="chicken-marsala-and-mushrooms">
+        <img src="photos/chicken-marsala-and-mushrooms.jpg" alt="Chicken Marsala &amp; Mushrooms" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chicken Marsala &amp; Mushrooms</div>
+          <div class="item-price">
+            <div class="price-sar">36 SAR</div>
+            <div class="price-usd">&asymp; $9.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Thinly sliced chicken breast sauteed with shitake, porcini mushroom in a cream sauce, served with mash potato &amp; steamed veg.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="crispy-honey-lemon-chicken">
+      <div class="item-photo placeholder" data-slug="crispy-honey-lemon-chicken">
+        <img src="photos/crispy-honey-lemon-chicken.jpg" alt="Crispy Honey Lemon Chicken" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Crispy Honey Lemon Chicken</div>
+          <div class="item-price">
+            <div class="price-sar">35 SAR</div>
+            <div class="price-usd">&asymp; $9.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Crispy fried chicken in honey lemon sauce served with steamed rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="country-fried-chicken">
+      <div class="item-photo placeholder" data-slug="country-fried-chicken">
+        <img src="photos/country-fried-chicken.jpg" alt="Country Fried Chicken" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Country Fried Chicken</div>
+          <div class="item-price">
+            <div class="price-sar">39 SAR</div>
+            <div class="price-usd">&asymp; $10.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Fried chicken breast, gravy sauce, mash potato, green beans.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="chilli-chicken">
+      <div class="item-photo placeholder" data-slug="chilli-chicken">
+        <img src="photos/chilli-chicken.jpg" alt="Chilli Chicken" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chilli Chicken</div>
+          <div class="item-price">
+            <div class="price-sar">39 SAR</div>
+            <div class="price-usd">&asymp; $10.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Fried chicken cubes with bell peppers and Chinese sauce served with steamed rice or noodles.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="steak-tenderloin">
+      <div class="item-photo placeholder" data-slug="steak-tenderloin">
+        <img src="photos/steak-tenderloin.jpg" alt="Steak Tenderloin" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Steak Tenderloin</div>
+          <div class="item-price">
+            <div class="price-sar">50 SAR</div>
+            <div class="price-usd">&asymp; $13.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Tenderloin fillet in mushroom sauce served with mash potato &amp; veg.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="beef-roulade">
+      <div class="item-photo placeholder" data-slug="beef-roulade">
+        <img src="photos/beef-roulade.jpg" alt="Beef Roulade" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Beef Roulade</div>
+          <div class="item-price">
+            <div class="price-sar">54 SAR</div>
+            <div class="price-usd">&asymp; $14.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Beef stuffed with spinach &amp; cheese served with mash potato &amp; veg.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="mongolian-beef">
+      <div class="item-photo placeholder" data-slug="mongolian-beef">
+        <img src="photos/mongolian-beef.jpg" alt="Mongolian Beef" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Mongolian Beef</div>
+          <div class="item-price">
+            <div class="price-sar">37 SAR</div>
+            <div class="price-usd">&asymp; $9.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Thin slices of caramelized beef in a balanced sauce tossed with green onions, served with steamed rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="grilled-lamb-chops">
+      <div class="item-photo placeholder" data-slug="grilled-lamb-chops">
+        <img src="photos/grilled-lamb-chops.jpg" alt="Grilled Lamb Chops" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Grilled Lamb Chops</div>
+          <div class="item-price">
+            <div class="price-sar">62 SAR</div>
+            <div class="price-usd">&asymp; $16.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Lamb chops served with roasted potatoes and tzatziki sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="rib-eye-steak">
+      <div class="item-photo placeholder" data-slug="rib-eye-steak">
+        <img src="photos/rib-eye-steak.jpg" alt="Rib Eye Steak" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Rib Eye Steak</div>
+          <div class="item-price">
+            <div class="price-sar">90 SAR</div>
+            <div class="price-usd">&asymp; $24.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Rib eye steak rubbed &amp; seasoned with fresh Italian herbs &amp; fresh peppercorn sauce, served with mash potato and vegetable.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="smoked-ribs">
+      <div class="item-photo placeholder" data-slug="smoked-ribs">
+        <img src="photos/smoked-ribs.jpg" alt="Smoked Ribs" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Smoked Ribs</div>
+          <div class="item-price">
+            <div class="price-sar">68 SAR</div>
+            <div class="price-usd">&asymp; $18.13</div>
+          </div>
+        </div>
+        <div class="item-desc">Short ribs with pure honey &amp; BBQ sauce served with potato salad.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="braised-lamb-shank">
+      <div class="item-photo placeholder" data-slug="braised-lamb-shank">
+        <img src="photos/braised-lamb-shank.jpg" alt="Braised Lamb Shank" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Braised Lamb Shank</div>
+          <div class="item-price">
+            <div class="price-sar">76 SAR</div>
+            <div class="price-usd">&asymp; $20.27</div>
+          </div>
+        </div>
+        <div class="item-desc">Lamb shank in burgundy sauce served with mash potato.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="beef-stroganoff">
+      <div class="item-photo placeholder" data-slug="beef-stroganoff">
+        <img src="photos/beef-stroganoff.jpg" alt="Beef Stroganoff" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Beef Stroganoff</div>
+          <div class="item-price">
+            <div class="price-sar">38 SAR</div>
+            <div class="price-usd">&asymp; $10.13</div>
+          </div>
+        </div>
+        <div class="item-desc">Beef thin slices in creamy mushroom sauce served with steamed rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="arabic-mixed-grill">
+      <div class="item-photo placeholder" data-slug="arabic-mixed-grill">
+        <img src="photos/arabic-mixed-grill.jpg" alt="Arabic Mixed Grill" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Arabic Mixed Grill</div>
+          <div class="item-price">
+            <div class="price-sar">36 SAR</div>
+            <div class="price-usd">&asymp; $9.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Awsal, kabab, shishtawook served with hummus, garlic sauce, fries &amp; bread.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="peri-peri-chicken">
+      <div class="item-photo placeholder" data-slug="peri-peri-chicken">
+        <img src="photos/peri-peri-chicken.jpg" alt="Peri Peri Chicken" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Peri Peri Chicken</div>
+          <div class="item-price">
+            <div class="price-sar">37 SAR</div>
+            <div class="price-usd">&asymp; $9.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Peri peri marinated chicken thigh served with nan bread, fries &amp; garlic sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="grilled-rosemary-salmon">
+      <div class="item-photo placeholder" data-slug="grilled-rosemary-salmon">
+        <img src="photos/grilled-rosemary-salmon.jpg" alt="Grilled Rosemary Salmon" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Grilled Rosemary Salmon</div>
+          <div class="item-price">
+            <div class="price-sar">50 SAR</div>
+            <div class="price-usd">&asymp; $13.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Grilled salmon on a bed of steamed fresh spinach served with mash potato.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="tepanyaki-salmon">
+      <div class="item-photo placeholder" data-slug="tepanyaki-salmon">
+        <img src="photos/tepanyaki-salmon.jpg" alt="Tepanyaki Salmon" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Tepanyaki Salmon</div>
+          <div class="item-price">
+            <div class="price-sar">52 SAR</div>
+            <div class="price-usd">&asymp; $13.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Tepanyaki marinated salmon fillet served with garlic mashed potato and saute spinach.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="lobster-thermidor">
+      <div class="item-photo placeholder" data-slug="lobster-thermidor">
+        <img src="photos/lobster-thermidor.jpg" alt="Lobster Thermidor" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Lobster Thermidor</div>
+          <div class="item-price">
+            <div class="price-sar">94 SAR</div>
+            <div class="price-usd">&asymp; $25.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Lobster tails served with lemon butter sauce, mash potato &amp; veg.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="fish-and-chips">
+      <div class="item-photo placeholder" data-slug="fish-and-chips">
+        <img src="photos/fish-and-chips.jpg" alt="Fish &amp; Chips" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Fish &amp; Chips</div>
+          <div class="item-price">
+            <div class="price-sar">31 SAR</div>
+            <div class="price-usd">&asymp; $8.27</div>
+          </div>
+        </div>
+        <div class="item-desc">Battered fish fillet served with mushy peas, coleslaw, tartar sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="grilled-seafood-platter">
+      <div class="item-photo placeholder" data-slug="grilled-seafood-platter">
+        <img src="photos/grilled-seafood-platter.jpg" alt="Grilled Seafood Platter" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Grilled Seafood Platter</div>
+          <div class="item-price">
+            <div class="price-sar">66 SAR</div>
+            <div class="price-usd">&asymp; $17.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Grilled shrimp, salmon, hamour, mussels &amp; calamari served with saute veg &amp; lemon butter sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood spicy" data-slug="sriracha-grilled-shrimp">
+      <div class="item-photo placeholder" data-slug="sriracha-grilled-shrimp">
+        <img src="photos/sriracha-grilled-shrimp.jpg" alt="Sriracha Grilled Shrimp" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Sriracha Grilled Shrimp</div>
+          <div class="item-price">
+            <div class="price-sar">53 SAR</div>
+            <div class="price-usd">&asymp; $14.13</div>
+          </div>
+        </div>
+        <div class="item-desc">Shrimp with sriracha sauce served with cilantro rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="nasi-goreng">
+      <div class="item-photo placeholder" data-slug="nasi-goreng">
+        <img src="photos/nasi-goreng.jpg" alt="Nasi Goreng" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Nasi Goreng</div>
+          <div class="item-price">
+            <div class="price-sar">46 SAR</div>
+            <div class="price-usd">&asymp; $12.27</div>
+          </div>
+        </div>
+        <div class="item-desc">Beef or chicken in goreng rice, cracker, over easy egg, peanut butter gravy.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="butter-chicken">
+      <div class="item-photo placeholder" data-slug="butter-chicken">
+        <img src="photos/butter-chicken.jpg" alt="Butter Chicken" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Butter Chicken</div>
+          <div class="item-price">
+            <div class="price-sar">33 SAR</div>
+            <div class="price-usd">&asymp; $8.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Traditional instant pot butter chicken masala served with ghee rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="tandoor-chicken-biryani">
+      <div class="item-photo placeholder" data-slug="tandoor-chicken-biryani">
+        <img src="photos/tandoor-chicken-biryani.jpg" alt="Tandoor Chicken Biryani" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Tandoor Chicken Biryani</div>
+          <div class="item-price">
+            <div class="price-sar">34 SAR</div>
+            <div class="price-usd">&asymp; $9.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Tandoor marinated chicken biryani served with pickle, papad &amp; raitha.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="kadai-masala">
+      <div class="item-photo placeholder" data-slug="kadai-masala">
+        <img src="photos/kadai-masala.jpg" alt="Kadai Masala" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Kadai Masala</div>
+          <div class="item-price">
+            <div class="price-sar">33 SAR</div>
+            <div class="price-usd">&asymp; $8.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Chicken or beef marinated in kadai masala served with ghee rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="thai-red-curry">
+      <div class="item-photo placeholder" data-slug="thai-red-curry">
+        <img src="photos/thai-red-curry.jpg" alt="Thai Red Curry" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Thai Red Curry</div>
+          <div class="item-price">
+            <div class="price-sar">33 SAR</div>
+            <div class="price-usd">&asymp; $8.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Chicken or beef in red coconut curry sauce served with steam rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Appetizer">Appetizer</h2>
+    <div class="item-card" data-tags="halal seafood spicy" data-slug="dynamite-shrimp">
+      <div class="item-photo placeholder" data-slug="dynamite-shrimp">
+        <img src="photos/dynamite-shrimp.jpg" alt="Dynamite Shrimp" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Dynamite Shrimp</div>
+          <div class="item-price">
+            <div class="price-sar">40 SAR</div>
+            <div class="price-usd">&asymp; $10.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Fried shrimp served with homemade dynamite sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="nachos">
+      <div class="item-photo placeholder" data-slug="nachos">
+        <img src="photos/nachos.jpg" alt="Nachos" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Nachos</div>
+          <div class="item-price">
+            <div class="price-sar">31 SAR</div>
+            <div class="price-usd">&asymp; $8.27</div>
+          </div>
+        </div>
+        <div class="item-desc">Tortilla chips, guacamole, chili con carne, sour cream, jalapeno, olives, mozzarella cheese, salsa.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="jalapeno-chicken-wings">
+      <div class="item-photo placeholder" data-slug="jalapeno-chicken-wings">
+        <img src="photos/jalapeno-chicken-wings.jpg" alt="Jalapeno Chicken Wings" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Jalapeno Chicken Wings</div>
+          <div class="item-price">
+            <div class="price-sar">30 SAR</div>
+            <div class="price-usd">&asymp; $8.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Crispy chicken wings coated with homemade jalapeno sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="french-dip-slider">
+      <div class="item-photo placeholder" data-slug="french-dip-slider">
+        <img src="photos/french-dip-slider.jpg" alt="French Dip Slider" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">French Dip Slider</div>
+          <div class="item-price">
+            <div class="price-sar">32 SAR</div>
+            <div class="price-usd">&asymp; $8.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Beef, lettuce, cheddar cheese, slider sauce, caramelized onions.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="homemade-chicken-nuggets">
+      <div class="item-photo placeholder" data-slug="homemade-chicken-nuggets">
+        <img src="photos/homemade-chicken-nuggets.jpg" alt="Homemade Chicken Nuggets" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Homemade Chicken Nuggets</div>
+          <div class="item-price">
+            <div class="price-sar">21 SAR</div>
+            <div class="price-usd">&asymp; $5.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Freshly made chicken fillet served with French fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="bacon-wrapped-steak-bites">
+      <div class="item-photo placeholder" data-slug="bacon-wrapped-steak-bites">
+        <img src="photos/bacon-wrapped-steak-bites.jpg" alt="Bacon Wrapped Steak Bites" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Bacon Wrapped Steak Bites</div>
+          <div class="item-price">
+            <div class="price-sar">32 SAR</div>
+            <div class="price-usd">&asymp; $8.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Minced beef stuffed with Emmental cheese wrapped with bacon and BBQ glaze.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="buffalo-popcorn-chicken">
+      <div class="item-photo placeholder" data-slug="buffalo-popcorn-chicken">
+        <img src="photos/buffalo-popcorn-chicken.jpg" alt="Buffalo Popcorn Chicken" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Buffalo Popcorn Chicken</div>
+          <div class="item-price">
+            <div class="price-sar">30 SAR</div>
+            <div class="price-usd">&asymp; $8.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Small bites of crispy deep fried chicken with spicy buffalo sauce, garnished with spring onion.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Sandwiches">Sandwiches</h2>
+    <div class="item-card" data-tags="halal" data-slug="pulled-smoked-beef-sandwich">
+      <div class="item-photo placeholder" data-slug="pulled-smoked-beef-sandwich">
+        <img src="photos/pulled-smoked-beef-sandwich.jpg" alt="Pulled Smoked Beef Sandwich" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Pulled Smoked Beef Sandwich</div>
+          <div class="item-price">
+            <div class="price-sar">39 SAR</div>
+            <div class="price-usd">&asymp; $10.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Pulled beef, caramelized onion, Emmental cheese, multigrain bed, served with potato wedges and coleslaw.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="chicken-avocado-panini-sandwich">
+      <div class="item-photo placeholder" data-slug="chicken-avocado-panini-sandwich">
+        <img src="photos/chicken-avocado-panini-sandwich.jpg" alt="Chicken Avocado Panini Sandwich" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chicken Avocado Panini Sandwich</div>
+          <div class="item-price">
+            <div class="price-sar">33 SAR</div>
+            <div class="price-usd">&asymp; $8.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Sandwich in panini bread stuffed with avocado, chicken and chef&#x27;s sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="quesadilla">
+      <div class="item-photo placeholder" data-slug="quesadilla">
+        <img src="photos/quesadilla.jpg" alt="Quesadilla" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Quesadilla</div>
+          <div class="item-price">
+            <div class="price-sar">33 SAR</div>
+            <div class="price-usd">&asymp; $8.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Tortilla filled with chicken, melted cheese, chilies, served with guacamole, salsa &amp; sour cream with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="beef-tenderloin-steak-sandwich">
+      <div class="item-photo placeholder" data-slug="beef-tenderloin-steak-sandwich">
+        <img src="photos/beef-tenderloin-steak-sandwich.jpg" alt="Beef Tenderloin Steak Sandwich" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Beef Tenderloin Steak Sandwich</div>
+          <div class="item-price">
+            <div class="price-sar">36 SAR</div>
+            <div class="price-usd">&asymp; $9.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Beef tenderloin steak sandwich with sauteed onion, mushroom, melted cheese, garlic mustard mayo and smoked jalapeno sauce with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="classic-club-sandwich">
+      <div class="item-photo placeholder" data-slug="classic-club-sandwich">
+        <img src="photos/classic-club-sandwich.jpg" alt="Classic Club Sandwich" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Classic Club Sandwich</div>
+          <div class="item-price">
+            <div class="price-sar">30 SAR</div>
+            <div class="price-usd">&asymp; $8.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Chicken salad, bacon, fried egg, tomato, lettuce, cheese &amp; fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="bacon-cheese-beef-burger">
+      <div class="item-photo placeholder" data-slug="bacon-cheese-beef-burger">
+        <img src="photos/bacon-cheese-beef-burger.jpg" alt="Bacon Cheese Beef Burger" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Bacon Cheese Beef Burger</div>
+          <div class="item-price">
+            <div class="price-sar">35 SAR</div>
+            <div class="price-usd">&asymp; $9.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Angus beef patty covered with melted cheddar &amp; American cheese, crispy beef bacon and secret sauce with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="korean-crispy-fried-chicken-burger">
+      <div class="item-photo placeholder" data-slug="korean-crispy-fried-chicken-burger">
+        <img src="photos/korean-crispy-fried-chicken-burger.jpg" alt="Korean Crispy Fried Chicken Burger" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Korean Crispy Fried Chicken Burger</div>
+          <div class="item-price">
+            <div class="price-sar">32 SAR</div>
+            <div class="price-usd">&asymp; $8.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Crispy fried chicken with jalapeno, cabbage slaw, in sriracha aioli with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="chicken-shawarma">
+      <div class="item-photo placeholder" data-slug="chicken-shawarma">
+        <img src="photos/chicken-shawarma.jpg" alt="Chicken Shawarma" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chicken Shawarma</div>
+          <div class="item-price">
+            <div class="price-sar">18 SAR</div>
+            <div class="price-usd">&asymp; $4.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Shawarma marinated chicken, cucumber pickle, fries, lettuce, garlic sauce in margoog bread served with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="honey-mustard-chicken-sandwich">
+      <div class="item-photo placeholder" data-slug="honey-mustard-chicken-sandwich">
+        <img src="photos/honey-mustard-chicken-sandwich.jpg" alt="Honey Mustard Chicken Sandwich" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Honey Mustard Chicken Sandwich</div>
+          <div class="item-price">
+            <div class="price-sar">30 SAR</div>
+            <div class="price-usd">&asymp; $8.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Grilled chicken breast, bacon, cheddar cheese, honey mustard sauce, fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="felafel-wrap">
+      <div class="item-photo placeholder" data-slug="felafel-wrap">
+        <img src="photos/felafel-wrap.jpg" alt="Felafel Wrap" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Felafel Wrap</div>
+          <div class="item-price">
+            <div class="price-sar">19 SAR</div>
+            <div class="price-usd">&asymp; $5.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Falafel, lettuce, cucumber pickle with tahina sauce in margoog bread served with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal seafood" data-slug="tuna-sandwich">
+      <div class="item-photo placeholder" data-slug="tuna-sandwich">
+        <img src="photos/tuna-sandwich.jpg" alt="Tuna Sandwich" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Tuna Sandwich</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Tuna, tomato, cucumber, in toast bread with fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Pizza">Pizza</h2>
+    <div class="item-card" data-tags="halal spicy" data-slug="chicken-fajita-pizza">
+      <div class="item-photo placeholder" data-slug="chicken-fajita-pizza">
+        <img src="photos/chicken-fajita-pizza.jpg" alt="Chicken Fajita Pizza" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chicken Fajita Pizza</div>
+          <div class="item-price">
+            <div class="price-sar">35 SAR</div>
+            <div class="price-usd">&asymp; $9.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Tomato sauce, spiced chicken, cheese, bell pepper, jalapeno, fajita sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="dynamite-chicken-pizza">
+      <div class="item-photo placeholder" data-slug="dynamite-chicken-pizza">
+        <img src="photos/dynamite-chicken-pizza.jpg" alt="Dynamite Chicken Pizza" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Dynamite Chicken Pizza</div>
+          <div class="item-price">
+            <div class="price-sar">33 SAR</div>
+            <div class="price-usd">&asymp; $8.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Shredded chicken, mozzarella, dynamite sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="marinara-meatballs-pizza">
+      <div class="item-photo placeholder" data-slug="marinara-meatballs-pizza">
+        <img src="photos/marinara-meatballs-pizza.jpg" alt="Marinara Meatballs Pizza" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Marinara Meatballs Pizza</div>
+          <div class="item-price">
+            <div class="price-sar">34 SAR</div>
+            <div class="price-usd">&asymp; $9.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Minced meat, mozzarella cheese, marinara sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="classic-margarita">
+      <div class="item-photo placeholder" data-slug="classic-margarita">
+        <img src="photos/classic-margarita.jpg" alt="Classic Margarita" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Classic Margarita</div>
+          <div class="item-price">
+            <div class="price-sar">27 SAR</div>
+            <div class="price-usd">&asymp; $7.20</div>
+          </div>
+        </div>
+        <div class="item-desc">Tomato sauce, mozzarella, basil.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="peri-peri-chicken-pizza">
+      <div class="item-photo placeholder" data-slug="peri-peri-chicken-pizza">
+        <img src="photos/peri-peri-chicken-pizza.jpg" alt="Peri Peri Chicken Pizza" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Peri Peri Chicken Pizza</div>
+          <div class="item-price">
+            <div class="price-sar">32 SAR</div>
+            <div class="price-usd">&asymp; $8.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Peri peri grilled chicken, mozzarella, tomato sauce, onion, bell pepper.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="veg-pizza">
+      <div class="item-photo placeholder" data-slug="veg-pizza">
+        <img src="photos/veg-pizza.jpg" alt="Veg Pizza" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Veg Pizza</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Mozzarella, mushroom, peppers, onion, olives.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="hawaiian-pizza">
+      <div class="item-photo placeholder" data-slug="hawaiian-pizza">
+        <img src="photos/hawaiian-pizza.jpg" alt="Hawaiian Pizza" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Hawaiian Pizza</div>
+          <div class="item-price">
+            <div class="price-sar">32 SAR</div>
+            <div class="price-usd">&asymp; $8.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Beef pepperoni, mozzarella, pineapple, tomato sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="four-cheese-pizza">
+      <div class="item-photo placeholder" data-slug="four-cheese-pizza">
+        <img src="photos/four-cheese-pizza.jpg" alt="Four Cheese Pizza" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Four Cheese Pizza</div>
+          <div class="item-price">
+            <div class="price-sar">34 SAR</div>
+            <div class="price-usd">&asymp; $9.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Mozzarella, cheddar, akawi, parmesan, tomato sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Create Your Own Pasta">Create Your Own Pasta</h2>
+    <div class="item-card" data-tags="halal seafood" data-slug="bistro-shrimp-pasta">
+      <div class="item-photo placeholder" data-slug="bistro-shrimp-pasta">
+        <img src="photos/bistro-shrimp-pasta.jpg" alt="Bistro Shrimp Pasta" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Bistro Shrimp Pasta</div>
+          <div class="item-price">
+            <div class="price-sar">37 SAR</div>
+            <div class="price-usd">&asymp; $9.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Pan seared shrimp, fresh mushroom, tomato &amp; arugula with spaghetti and a basil garlic lemon cream sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="pad-thai-noodles">
+      <div class="item-photo placeholder" data-slug="pad-thai-noodles">
+        <img src="photos/pad-thai-noodles.jpg" alt="Pad Thai Noodles" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Pad Thai Noodles</div>
+          <div class="item-price">
+            <div class="price-sar">29 SAR</div>
+            <div class="price-usd">&asymp; $7.73</div>
+          </div>
+        </div>
+        <div class="item-desc">Veg &amp; chicken option available.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Soup">Soup</h2>
+    <div class="item-card" data-tags="halal seafood spicy" data-slug="tom-yum-soup">
+      <div class="item-photo placeholder" data-slug="tom-yum-soup">
+        <img src="photos/tom-yum-soup.jpg" alt="Tom Yum Soup" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Tom Yum Soup</div>
+          <div class="item-price">
+            <div class="price-sar">34 SAR</div>
+            <div class="price-usd">&asymp; $9.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic Thai hot &amp; sour soup.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag" data-i18n-tag="seafood">Seafood</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="beef-broth-soup">
+      <div class="item-photo placeholder" data-slug="beef-broth-soup">
+        <img src="photos/beef-broth-soup.jpg" alt="Beef Broth Soup" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Beef Broth Soup</div>
+          <div class="item-price">
+            <div class="price-sar">30 SAR</div>
+            <div class="price-usd">&asymp; $8.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Slow simmered beef broth.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal" data-slug="chicken-corn-soup">
+      <div class="item-photo placeholder" data-slug="chicken-corn-soup">
+        <img src="photos/chicken-corn-soup.jpg" alt="Chicken Corn Soup" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chicken Corn Soup</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Creamy chicken and sweet corn soup.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal spicy" data-slug="texas-chilli-chicken-soup">
+      <div class="item-photo placeholder" data-slug="texas-chilli-chicken-soup">
+        <img src="photos/texas-chilli-chicken-soup.jpg" alt="Texas Chilli Chicken Soup" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Texas Chilli Chicken Soup</div>
+          <div class="item-price">
+            <div class="price-sar">27 SAR</div>
+            <div class="price-usd">&asymp; $7.20</div>
+          </div>
+        </div>
+        <div class="item-desc">Spiced chicken chilli soup.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag spicy" data-i18n-tag="spicy">Spicy</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="lentil-soup">
+      <div class="item-photo placeholder" data-slug="lentil-soup">
+        <img src="photos/lentil-soup.jpg" alt="Lentil Soup" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Lentil Soup</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic Middle Eastern lentil soup.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Sides">Sides</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="creamy-spinach">
+      <div class="item-photo placeholder" data-slug="creamy-spinach">
+        <img src="photos/creamy-spinach.jpg" alt="Creamy Spinach" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Creamy Spinach</div>
+          <div class="item-price">
+            <div class="price-sar">12 SAR</div>
+            <div class="price-usd">&asymp; $3.20</div>
+          </div>
+        </div>
+        <div class="item-desc">Sauteed spinach in a light cream sauce.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="mashed-potato">
+      <div class="item-photo placeholder" data-slug="mashed-potato">
+        <img src="photos/mashed-potato.jpg" alt="Mashed Potato" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Mashed Potato</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic buttery mashed potato.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="saute-vegetable">
+      <div class="item-photo placeholder" data-slug="saute-vegetable">
+        <img src="photos/saute-vegetable.jpg" alt="Saute Vegetable" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Saute Vegetable</div>
+          <div class="item-price">
+            <div class="price-sar">8 SAR</div>
+            <div class="price-usd">&asymp; $2.13</div>
+          </div>
+        </div>
+        <div class="item-desc">Seasonal vegetables sauteed lightly.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="french-fries">
+      <div class="item-photo placeholder" data-slug="french-fries">
+        <img src="photos/french-fries.jpg" alt="French Fries" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">French Fries</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Crispy golden fries.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="potato-wedges">
+      <div class="item-photo placeholder" data-slug="potato-wedges">
+        <img src="photos/potato-wedges.jpg" alt="Potato Wedges" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Potato Wedges</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Seasoned potato wedges.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="fried-rice">
+      <div class="item-photo placeholder" data-slug="fried-rice">
+        <img src="photos/fried-rice.jpg" alt="Fried Rice" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Fried Rice</div>
+          <div class="item-price">
+            <div class="price-sar">12 SAR</div>
+            <div class="price-usd">&asymp; $3.20</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic wok-fried rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="steamed-rice">
+      <div class="item-photo placeholder" data-slug="steamed-rice">
+        <img src="photos/steamed-rice.jpg" alt="Steamed Rice" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Steamed Rice</div>
+          <div class="item-price">
+            <div class="price-sar">8 SAR</div>
+            <div class="price-usd">&asymp; $2.13</div>
+          </div>
+        </div>
+        <div class="item-desc">Plain steamed rice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="no-results" data-i18n="noResults">No dishes match your current filters. Try resetting a filter above.</div>
+  </section>
+
+  <section class="category-block" id="dessert">
+    <h2 class="category-title" data-i18n-cat="Dessert Menu">Dessert Menu</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="vanilla-cream-brulee">
+      <div class="item-photo placeholder" data-slug="vanilla-cream-brulee">
+        <img src="photos/vanilla-cream-brulee.jpg" alt="Vanilla Cream Brulee" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Vanilla Cream Brulee</div>
+          <div class="item-price">
+            <div class="price-sar">17 SAR</div>
+            <div class="price-usd">&asymp; $4.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic vanilla custard with a caramelized sugar crust.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="apple-pie">
+      <div class="item-photo placeholder" data-slug="apple-pie">
+        <img src="photos/apple-pie.jpg" alt="Apple Pie" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Apple Pie</div>
+          <div class="item-price">
+            <div class="price-sar">18 SAR</div>
+            <div class="price-usd">&asymp; $4.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Warm spiced apple pie.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="chocolate-brownies">
+      <div class="item-photo placeholder" data-slug="chocolate-brownies">
+        <img src="photos/chocolate-brownies.jpg" alt="Chocolate Brownies" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Chocolate Brownies</div>
+          <div class="item-price">
+            <div class="price-sar">16 SAR</div>
+            <div class="price-usd">&asymp; $4.27</div>
+          </div>
+        </div>
+        <div class="item-desc">Rich chocolate brownie squares.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="red-velvet-cheese-cake">
+      <div class="item-photo placeholder" data-slug="red-velvet-cheese-cake">
+        <img src="photos/red-velvet-cheese-cake.jpg" alt="Red Velvet Cheese Cake" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Red Velvet Cheese Cake</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Red velvet cheesecake with cream cheese frosting.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="blueberry-cobbler-cake">
+      <div class="item-photo placeholder" data-slug="blueberry-cobbler-cake">
+        <img src="photos/blueberry-cobbler-cake.jpg" alt="Blueberry Cobbler Cake" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Blueberry Cobbler Cake</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Warm blueberry cobbler cake.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="panna-cotta">
+      <div class="item-photo placeholder" data-slug="panna-cotta">
+        <img src="photos/panna-cotta.jpg" alt="Panna Cotta" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Panna Cotta</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Silky Italian cream dessert.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="ice-cream">
+      <div class="item-photo placeholder" data-slug="ice-cream">
+        <img src="photos/ice-cream.jpg" alt="Ice Cream" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Ice Cream</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Choice of classic flavors.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="crepe">
+      <div class="item-photo placeholder" data-slug="crepe">
+        <img src="photos/crepe.jpg" alt="Crepe" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Crepe</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Choice of Nutella, pistachio or caramel filling.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="your-choice-of-pancake">
+      <div class="item-photo placeholder" data-slug="your-choice-of-pancake">
+        <img src="photos/your-choice-of-pancake.jpg" alt="Your Choice of Pancake" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Your Choice of Pancake</div>
+          <div class="item-price">
+            <div class="price-sar">18 SAR</div>
+            <div class="price-usd">&asymp; $4.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Choice of Nutella, honey or caramel topping.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="no-results" data-i18n="noResults">No dishes match your current filters. Try resetting a filter above.</div>
+  </section>
+
+  <section class="category-block" id="beverages">
+    <h2 class="category-title" data-i18n-cat="Frappe &amp; Coffee">Frappe &amp; Coffee</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="mocha-frappe">
+      <div class="item-photo placeholder" data-slug="mocha-frappe">
+        <img src="photos/mocha-frappe.jpg" alt="Mocha Frappe" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Mocha Frappe</div>
+          <div class="item-price">
+            <div class="price-sar">22 SAR</div>
+            <div class="price-usd">&asymp; $5.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Blended coffee with chocolate.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="caramel-frappe">
+      <div class="item-photo placeholder" data-slug="caramel-frappe">
+        <img src="photos/caramel-frappe.jpg" alt="Caramel Frappe" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Caramel Frappe</div>
+          <div class="item-price">
+            <div class="price-sar">22 SAR</div>
+            <div class="price-usd">&asymp; $5.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Blended coffee with caramel.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="vanilla-frappe">
+      <div class="item-photo placeholder" data-slug="vanilla-frappe">
+        <img src="photos/vanilla-frappe.jpg" alt="Vanilla Frappe" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Vanilla Frappe</div>
+          <div class="item-price">
+            <div class="price-sar">22 SAR</div>
+            <div class="price-usd">&asymp; $5.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Blended coffee with vanilla.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="cold-coffee">
+      <div class="item-photo placeholder" data-slug="cold-coffee">
+        <img src="photos/cold-coffee.jpg" alt="Cold Coffee" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Cold Coffee</div>
+          <div class="item-price">
+            <div class="price-sar">22 SAR</div>
+            <div class="price-usd">&asymp; $5.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Chilled iced coffee.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="cappuccino">
+      <div class="item-photo placeholder" data-slug="cappuccino">
+        <img src="photos/cappuccino.jpg" alt="Cappuccino" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Cappuccino</div>
+          <div class="item-price">
+            <div class="price-sar">14 SAR</div>
+            <div class="price-usd">&asymp; $3.73</div>
+          </div>
+        </div>
+        <div class="item-desc">Espresso with steamed milk foam.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="american-coffee">
+      <div class="item-photo placeholder" data-slug="american-coffee">
+        <img src="photos/american-coffee.jpg" alt="American Coffee" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">American Coffee</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic filtered black coffee.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="hot-chocolate">
+      <div class="item-photo placeholder" data-slug="hot-chocolate">
+        <img src="photos/hot-chocolate.jpg" alt="Hot Chocolate" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Hot Chocolate</div>
+          <div class="item-price">
+            <div class="price-sar">16 SAR</div>
+            <div class="price-usd">&asymp; $4.27</div>
+          </div>
+        </div>
+        <div class="item-desc">Rich hot chocolate.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="cafe-late">
+      <div class="item-photo placeholder" data-slug="cafe-late">
+        <img src="photos/cafe-late.jpg" alt="Cafe Late" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Cafe Late</div>
+          <div class="item-price">
+            <div class="price-sar">14 SAR</div>
+            <div class="price-usd">&asymp; $3.73</div>
+          </div>
+        </div>
+        <div class="item-desc">Espresso with steamed milk.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="espresso">
+      <div class="item-photo placeholder" data-slug="espresso">
+        <img src="photos/espresso.jpg" alt="Espresso" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Espresso</div>
+          <div class="item-price">
+            <div class="price-sar">6 SAR</div>
+            <div class="price-usd">&asymp; $1.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Single shot of espresso.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="tea">
+      <div class="item-photo placeholder" data-slug="tea">
+        <img src="photos/tea.jpg" alt="Tea" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Tea</div>
+          <div class="item-price">
+            <div class="price-sar">5 SAR</div>
+            <div class="price-usd">&asymp; $1.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic brewed tea.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Fresh Juice">Fresh Juice</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="pinacolada">
+      <div class="item-photo placeholder" data-slug="pinacolada">
+        <img src="photos/pinacolada.jpg" alt="Pinacolada" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Pinacolada</div>
+          <div class="item-price">
+            <div class="price-sar">18 SAR</div>
+            <div class="price-usd">&asymp; $4.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Pineapple and coconut blend, non-alcoholic.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="fresh-orange-juice">
+      <div class="item-photo placeholder" data-slug="fresh-orange-juice">
+        <img src="photos/fresh-orange-juice.jpg" alt="Fresh Orange Juice" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Fresh Orange Juice</div>
+          <div class="item-price">
+            <div class="price-sar">18 SAR</div>
+            <div class="price-usd">&asymp; $4.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Freshly squeezed orange juice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="fresh-cocktail-juice">
+      <div class="item-photo placeholder" data-slug="fresh-cocktail-juice">
+        <img src="photos/fresh-cocktail-juice.jpg" alt="Fresh Cocktail Juice" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Fresh Cocktail Juice</div>
+          <div class="item-price">
+            <div class="price-sar">18 SAR</div>
+            <div class="price-usd">&asymp; $4.80</div>
+          </div>
+        </div>
+        <div class="item-desc">Mixed fresh fruit blend.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="lemon-with-mint">
+      <div class="item-photo placeholder" data-slug="lemon-with-mint">
+        <img src="photos/lemon-with-mint.jpg" alt="Lemon with Mint" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Lemon with Mint</div>
+          <div class="item-price">
+            <div class="price-sar">16 SAR</div>
+            <div class="price-usd">&asymp; $4.27</div>
+          </div>
+        </div>
+        <div class="item-desc">Fresh lemon mint juice.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="pineapple-with-ginger">
+      <div class="item-photo placeholder" data-slug="pineapple-with-ginger">
+        <img src="photos/pineapple-with-ginger.jpg" alt="Pineapple with Ginger" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Pineapple with Ginger</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Pineapple juice with fresh ginger.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="mango-mania">
+      <div class="item-photo placeholder" data-slug="mango-mania">
+        <img src="photos/mango-mania.jpg" alt="Mango Mania" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Mango Mania</div>
+          <div class="item-price">
+            <div class="price-sar">23 SAR</div>
+            <div class="price-usd">&asymp; $6.13</div>
+          </div>
+        </div>
+        <div class="item-desc">Fresh mango blend.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Smoothies">Smoothies</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="banana-oats-smoothie">
+      <div class="item-photo placeholder" data-slug="banana-oats-smoothie">
+        <img src="photos/banana-oats-smoothie.jpg" alt="Banana Oats Smoothie" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Banana Oats Smoothie</div>
+          <div class="item-price">
+            <div class="price-sar">25 SAR</div>
+            <div class="price-usd">&asymp; $6.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Banana and oats blended smoothie.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="avocado-smoothie">
+      <div class="item-photo placeholder" data-slug="avocado-smoothie">
+        <img src="photos/avocado-smoothie.jpg" alt="Avocado Smoothie" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Avocado Smoothie</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Creamy avocado smoothie.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="mango-and-almond-smoothie">
+      <div class="item-photo placeholder" data-slug="mango-and-almond-smoothie">
+        <img src="photos/mango-and-almond-smoothie.jpg" alt="Mango &amp; Almond Smoothie" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Mango &amp; Almond Smoothie</div>
+          <div class="item-price">
+            <div class="price-sar">25 SAR</div>
+            <div class="price-usd">&asymp; $6.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Mango and almond blended smoothie.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="watermelon-smoothie">
+      <div class="item-photo placeholder" data-slug="watermelon-smoothie">
+        <img src="photos/watermelon-smoothie.jpg" alt="Watermelon Smoothie" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Watermelon Smoothie</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Fresh watermelon smoothie.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="milkshake">
+      <div class="item-photo placeholder" data-slug="milkshake">
+        <img src="photos/milkshake.jpg" alt="Milkshake" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Milkshake</div>
+          <div class="item-price">
+            <div class="price-sar">24 SAR</div>
+            <div class="price-usd">&asymp; $6.40</div>
+          </div>
+        </div>
+        <div class="item-desc">Classic milkshake.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Mojitos">Mojitos</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="classic-mojito">
+      <div class="item-photo placeholder" data-slug="classic-mojito">
+        <img src="photos/classic-mojito.jpg" alt="Classic Mojito" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Classic Mojito</div>
+          <div class="item-price">
+            <div class="price-sar">19 SAR</div>
+            <div class="price-usd">&asymp; $5.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Non-alcoholic mint lime mojito.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="mix-berries-mojito">
+      <div class="item-photo placeholder" data-slug="mix-berries-mojito">
+        <img src="photos/mix-berries-mojito.jpg" alt="Mix Berries Mojito" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Mix Berries Mojito</div>
+          <div class="item-price">
+            <div class="price-sar">22 SAR</div>
+            <div class="price-usd">&asymp; $5.87</div>
+          </div>
+        </div>
+        <div class="item-desc">Non-alcoholic mixed berry mojito.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="strawberry-mojito">
+      <div class="item-photo placeholder" data-slug="strawberry-mojito">
+        <img src="photos/strawberry-mojito.jpg" alt="Strawberry Mojito" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Strawberry Mojito</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Non-alcoholic strawberry mojito.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="blueberry-mojito">
+      <div class="item-photo placeholder" data-slug="blueberry-mojito">
+        <img src="photos/blueberry-mojito.jpg" alt="Blueberry Mojito" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Blueberry Mojito</div>
+          <div class="item-price">
+            <div class="price-sar">20 SAR</div>
+            <div class="price-usd">&asymp; $5.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Non-alcoholic blueberry mojito.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="ice-tea">
+      <div class="item-photo placeholder" data-slug="ice-tea">
+        <img src="photos/ice-tea.jpg" alt="Ice Tea" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Ice Tea</div>
+          <div class="item-price">
+            <div class="price-sar">17 SAR</div>
+            <div class="price-usd">&asymp; $4.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Chilled iced tea.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <h2 class="category-title" data-i18n-cat="Soft Drinks">Soft Drinks</h2>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="coke-7up-pepsi-diet">
+      <div class="item-photo placeholder" data-slug="coke-7up-pepsi-diet">
+        <img src="photos/coke-7up-pepsi-diet.jpg" alt="Coke / 7Up / Pepsi / Diet" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Coke / 7Up / Pepsi / Diet</div>
+          <div class="item-price">
+            <div class="price-sar">4 SAR</div>
+            <div class="price-usd">&asymp; $1.07</div>
+          </div>
+        </div>
+        <div class="item-desc">Choice of soft drink.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="perrier-small">
+      <div class="item-photo placeholder" data-slug="perrier-small">
+        <img src="photos/perrier-small.jpg" alt="Perrier Small" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Perrier Small</div>
+          <div class="item-price">
+            <div class="price-sar">6 SAR</div>
+            <div class="price-usd">&asymp; $1.60</div>
+          </div>
+        </div>
+        <div class="item-desc">Sparkling water, small bottle.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="perrier-medium">
+      <div class="item-photo placeholder" data-slug="perrier-medium">
+        <img src="photos/perrier-medium.jpg" alt="Perrier Medium" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Perrier Medium</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Sparkling water, medium bottle.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="perrier-large">
+      <div class="item-photo placeholder" data-slug="perrier-large">
+        <img src="photos/perrier-large.jpg" alt="Perrier Large" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Perrier Large</div>
+          <div class="item-price">
+            <div class="price-sar">15 SAR</div>
+            <div class="price-usd">&asymp; $4.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Sparkling water, large bottle.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="small-water">
+      <div class="item-photo placeholder" data-slug="small-water">
+        <img src="photos/small-water.jpg" alt="Small Water" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Small Water</div>
+          <div class="item-price">
+            <div class="price-sar">2 SAR</div>
+            <div class="price-usd">&asymp; $0.53</div>
+          </div>
+        </div>
+        <div class="item-desc">Bottled still water, small.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="large-water">
+      <div class="item-photo placeholder" data-slug="large-water">
+        <img src="photos/large-water.jpg" alt="Large Water" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Large Water</div>
+          <div class="item-price">
+            <div class="price-sar">5 SAR</div>
+            <div class="price-usd">&asymp; $1.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Bottled still water, large.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="soda">
+      <div class="item-photo placeholder" data-slug="soda">
+        <img src="photos/soda.jpg" alt="Soda" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Soda</div>
+          <div class="item-price">
+            <div class="price-sar">5 SAR</div>
+            <div class="price-usd">&asymp; $1.33</div>
+          </div>
+        </div>
+        <div class="item-desc">Club soda.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="beer-non-alcoholic">
+      <div class="item-photo placeholder" data-slug="beer-non-alcoholic">
+        <img src="photos/beer-non-alcoholic.jpg" alt="Beer (Non-Alcoholic)" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Beer (Non-Alcoholic)</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Non-alcoholic malt beverage.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="tonic-water-small">
+      <div class="item-photo placeholder" data-slug="tonic-water-small">
+        <img src="photos/tonic-water-small.jpg" alt="Tonic Water Small" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Tonic Water Small</div>
+          <div class="item-price">
+            <div class="price-sar">10 SAR</div>
+            <div class="price-usd">&asymp; $2.67</div>
+          </div>
+        </div>
+        <div class="item-desc">Tonic water, small bottle.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="item-card" data-tags="halal vegetarian" data-slug="tonic-water-large">
+      <div class="item-photo placeholder" data-slug="tonic-water-large">
+        <img src="photos/tonic-water-large.jpg" alt="Tonic Water Large" loading="lazy" decoding="async" width="84" height="84"
+             onerror="this.parentElement.classList.add('placeholder'); this.style.display='none';"
+             onload="this.parentElement.classList.remove('placeholder');">
+        <span class="ph-label" data-i18n="photoPending">PHOTO PENDING</span>
+      </div>
+      <div class="item-body">
+        <div class="item-top">
+          <div class="item-name">Tonic Water Large</div>
+          <div class="item-price">
+            <div class="price-sar">15 SAR</div>
+            <div class="price-usd">&asymp; $4.00</div>
+          </div>
+        </div>
+        <div class="item-desc">Tonic water, large bottle.</div>
+        <div class="tags"><span class="tag" data-i18n-tag="halal">Halal</span><span class="tag veg" data-i18n-tag="vegetarian">Vegetarian</span></div>
+      </div>
+    </div>
+    <div class="no-results" data-i18n="noResults">No dishes match your current filters. Try resetting a filter above.</div>
+  </section>
+</main>
+
+<footer data-i18n="footer">
+  Prices exclude VAT · Visa · MasterCard · mada
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const blocks = document.querySelectorAll('.category-block');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      blocks.forEach(b => b.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // === I18N DATA START (auto-generated by generate_menu.py -- do not hand-edit below) ===
+  const translations = {
+  "ru": {
+    "brandName": "Ресторан Seder Palms",
+    "welcome": "Свежие современные блюда в Seder Palms",
+    "filterHint": "Нажмите один раз, чтобы показать только это, ещё раз — чтобы скрыть, и снова — чтобы сбросить",
+    "noResults": "Нет блюд, соответствующих выбранным фильтрам. Попробуйте сбросить фильтр выше.",
+    "footer": "Цены указаны без НДС · Visa · MasterCard · mada",
+    "photoPending": "ФОТО СКОРО"
+  }
+};
+  const catTranslations = {
+  "ru": {
+    "Breakfast": "Завтрак",
+    "Salad": "Салаты",
+    "Main Course": "Основные блюда",
+    "Appetizer": "Закуски",
+    "Sandwiches": "Сэндвичи",
+    "Pizza": "Пицца",
+    "Create Your Own Pasta": "Паста на выбор",
+    "Soup": "Супы",
+    "Sides": "Гарниры",
+    "Dessert Menu": "Десерты",
+    "Frappe & Coffee": "Фраппе и кофе",
+    "Fresh Juice": "Свежевыжатые соки",
+    "Smoothies": "Смузи",
+    "Mojitos": "Мохито",
+    "Soft Drinks": "Безалкогольные напитки"
+  }
+};
+  const tabTranslations = {
+  "ru": {
+    "food": "Еда",
+    "dessert": "Десерт",
+    "beverages": "Напитки"
+  }
+};
+  const tagTranslations = {
+  "ru": {
+    "halal": "Халяль",
+    "vegetarian": "Вегетарианское",
+    "seafood": "Морепродукты",
+    "spicy": "Острое"
+  }
+};
+  const itemTranslations = {
+  "american-steak-breakfast": {
+    "ru": {
+      "name": "Американский завтрак со стейком",
+      "desc": "Стейк, яйцо-глазунья, грибы, жареный томат, картофель по-деревенски, тост, кофе."
+    }
+  },
+  "english-breakfast-platter": {
+    "ru": {
+      "name": "Английский завтрак",
+      "desc": "Яичница, гриль-сосиска, тушёные грибы, печёная фасоль, бекон, жареный томат, тост, кофе."
+    }
+  },
+  "hash-brown-egg-benedict": {
+    "ru": {
+      "name": "Яйца Бенедикт на картофельных драниках",
+      "desc": "Хрустящие картофельные драники с яйцом пашот, соусом холландез и шрирача-майонезом."
+    }
+  },
+  "avocado-toast-with-poached-egg": {
+    "ru": {
+      "name": "Тост с авокадо и яйцом пашот",
+      "desc": "Гуакамоле на мультизерновом хлебе, яйцо пашот и соус из хрена."
+    }
+  },
+  "your-choice-omelette": {
+    "ru": {
+      "name": "Омлет на выбор",
+      "desc": "Овощной или сырный омлет, подаётся с картофельными оладьями или тостом."
+    }
+  },
+  "philly-steak-omelette": {
+    "ru": {
+      "name": "Омлет со стейком по-филадельфийски",
+      "desc": "Яйцо, стейк, сыр моцарелла, болгарский перец и лук."
+    }
+  },
+  "egg-any-style": {
+    "ru": {
+      "name": "Яйца по вашему выбору",
+      "desc": "Яйца, приготовленные любым способом, подаются с картофельными оладьями, сальсой и тостом."
+    }
+  },
+  "egg-n-bun": {
+    "ru": {
+      "name": "Яйцо в булочке",
+      "desc": "Два яйца-глазуньи в бриоши с карамелизированным луком, беконом из говядины, сыром и фирменным соусом, подаётся с картофелем фри."
+    }
+  },
+  "chicken-schnitzel": {
+    "ru": {
+      "name": "Куриный шницель",
+      "desc": "Жареная курица, картофель фри, яйцо-глазунья, соус холландез."
+    }
+  },
+  "shakshuka-slider": {
+    "ru": {
+      "name": "Слайдер с шакшукой",
+      "desc": "Домашняя шакшука с сыром фета в тёплых мини-бриошах."
+    }
+  },
+  "crispy-quinoa-salad": {
+    "ru": {
+      "name": "Хрустящий салат с киноа",
+      "desc": "Хрустящий кукурузный салат с фетой, гранатом, болгарским перцем, эдамаме, черри и медово-горчичной заправкой."
+    }
+  },
+  "cobb-salmon-salad": {
+    "ru": {
+      "name": "Салат Кобб с лососем",
+      "desc": "Кубики лосося на гриле, авокадо, сыр с плесенью, бекон, томат, яйцо и микс зелени с фирменной заправкой."
+    }
+  },
+  "signature-steak-salad": {
+    "ru": {
+      "name": "Фирменный салат со стейком",
+      "desc": "Листья рукколы, тёплый картофельный салат, ломтики стейка, эдамаме, пармезан, соус бальзамик."
+    }
+  },
+  "the-greek-salad": {
+    "ru": {
+      "name": "Греческий салат",
+      "desc": "Салат латук, сыр фета, огурец, оливки, томат, белый лук, заправка с орегано."
+    }
+  },
+  "falafel-salad": {
+    "ru": {
+      "name": "Салат с фалафелем",
+      "desc": "Фалафель, айсберг, огурец, томат, маринованный огурец, петрушка, картофель фри, соус тахини."
+    }
+  },
+  "shrimp-cocktail-avocado-salad": {
+    "ru": {
+      "name": "Салат с креветками и авокадо",
+      "desc": "Сальса из авокадо с очищенными креветками, политыми соусом коктейль."
+    }
+  },
+  "classic-waldorf-salad": {
+    "ru": {
+      "name": "Классический салат Вальдорф",
+      "desc": "Ломтики яблока, сельдерей, йогурт, английская горчица, лимонный сок, виноград, клюква, молодая зелень с романо, засахаренные грецкие орехи."
+    }
+  },
+  "exotic-rocca-salad": {
+    "ru": {
+      "name": "Экзотический салат Рокка",
+      "desc": "Листья рукколы, вяленые томаты, халуми на гриле, пармезан с гранатовой заправкой."
+    }
+  },
+  "fattoush-salad": {
+    "ru": {
+      "name": "Салат Фаттуш",
+      "desc": "Полезный микс свежих овощей с поджаренным хлебом и гранатовой патокой."
+    }
+  },
+  "caesar-chicken-salad": {
+    "ru": {
+      "name": "Салат Цезарь с курицей",
+      "desc": "Курица гриль, салат латук с соусом Цезарь и пармезаном."
+    }
+  },
+  "hummus": {
+    "ru": {
+      "name": "Хумус",
+      "desc": "Нежная паста из нута, тахини, чеснока, лимона и оливкового масла, подаётся с питой."
+    }
+  },
+  "grilled-chicken-breast": {
+    "ru": {
+      "name": "Куриная грудка на гриле",
+      "desc": "Куриная грудка на гриле с картофельным пюре и овощами."
+    }
+  },
+  "chicken-parmigiana": {
+    "ru": {
+      "name": "Курица пармиджана",
+      "desc": "Куриная грудка в панировке с пармезаном, индюшиной ветчиной и соусом маринара, картофельное пюре и овощи."
+    }
+  },
+  "chicken-marsala-and-mushrooms": {
+    "ru": {
+      "name": "Курица марсала с грибами",
+      "desc": "Тонко нарезанная куриная грудка с шиитаке и грибами порчини в сливочном соусе, картофельное пюре и овощи на пару."
+    }
+  },
+  "crispy-honey-lemon-chicken": {
+    "ru": {
+      "name": "Хрустящая курица в медово-лимонном соусе",
+      "desc": "Хрустящая жареная курица в медово-лимонном соусе, подаётся с рисом на пару."
+    }
+  },
+  "country-fried-chicken": {
+    "ru": {
+      "name": "Жареная курица по-деревенски",
+      "desc": "Жареная куриная грудка, соус гриви, картофельное пюре, зелёная фасоль."
+    }
+  },
+  "chilli-chicken": {
+    "ru": {
+      "name": "Курица чили",
+      "desc": "Обжаренные кусочки курицы с болгарским перцем в китайском соусе, рис на пару или лапша."
+    }
+  },
+  "steak-tenderloin": {
+    "ru": {
+      "name": "Стейк из вырезки",
+      "desc": "Вырезка в грибном соусе с картофельным пюре и овощами."
+    }
+  },
+  "beef-roulade": {
+    "ru": {
+      "name": "Рулет из говядины",
+      "desc": "Говядина, фаршированная шпинатом и сыром, с картофельным пюре и овощами."
+    }
+  },
+  "mongolian-beef": {
+    "ru": {
+      "name": "Говядина по-монгольски",
+      "desc": "Тонко нарезанная карамелизированная говядина в пикантном соусе с зелёным луком, рис на пару."
+    }
+  },
+  "grilled-lamb-chops": {
+    "ru": {
+      "name": "Бараньи рёбрышки на гриле",
+      "desc": "Бараньи рёбрышки с печёным картофелем и соусом дзадзики."
+    }
+  },
+  "rib-eye-steak": {
+    "ru": {
+      "name": "Стейк Рибай",
+      "desc": "Стейк рибай, приправленный итальянскими травами и соусом из свежего перца, картофельное пюре и овощи."
+    }
+  },
+  "smoked-ribs": {
+    "ru": {
+      "name": "Копчёные рёбрышки",
+      "desc": "Короткие рёбрышки в медовом соусе барбекю с картофельным салатом."
+    }
+  },
+  "braised-lamb-shank": {
+    "ru": {
+      "name": "Тушёная баранья голяшка",
+      "desc": "Баранья голяшка в бургундском соусе с картофельным пюре."
+    }
+  },
+  "beef-stroganoff": {
+    "ru": {
+      "name": "Бефстроганов",
+      "desc": "Тонко нарезанная говядина в сливочно-грибном соусе, рис на пару."
+    }
+  },
+  "arabic-mixed-grill": {
+    "ru": {
+      "name": "Арабское мясное ассорти гриль",
+      "desc": "Авсаль, кебаб, шиштавук с хумусом, чесночным соусом, картофелем фри и хлебом."
+    }
+  },
+  "peri-peri-chicken": {
+    "ru": {
+      "name": "Курица пери-пери",
+      "desc": "Куриное бедро в маринаде пери-пери с наан-хлебом, картофелем фри и чесночным соусом."
+    }
+  },
+  "grilled-rosemary-salmon": {
+    "ru": {
+      "name": "Лосось на гриле с розмарином",
+      "desc": "Лосось на гриле на подушке из свежего шпината на пару с картофельным пюре."
+    }
+  },
+  "tepanyaki-salmon": {
+    "ru": {
+      "name": "Лосось теппаняки",
+      "desc": "Филе лосося в маринаде теппаняки с чесночным картофельным пюре и тушёным шпинатом."
+    }
+  },
+  "lobster-thermidor": {
+    "ru": {
+      "name": "Лобстер термидор",
+      "desc": "Хвосты лобстера с лимонно-масляным соусом, картофельным пюре и овощами."
+    }
+  },
+  "fish-and-chips": {
+    "ru": {
+      "name": "Рыба с картофелем фри",
+      "desc": "Рыбное филе в кляре с зелёным горошком, коулслоу, соусом тартар."
+    }
+  },
+  "grilled-seafood-platter": {
+    "ru": {
+      "name": "Ассорти из морепродуктов гриль",
+      "desc": "Креветки, лосось, хамур, мидии и кальмары на гриле с тушёными овощами и лимонно-масляным соусом."
+    }
+  },
+  "sriracha-grilled-shrimp": {
+    "ru": {
+      "name": "Креветки гриль со шрирачей",
+      "desc": "Креветки с соусом шрирача, рис с кинзой."
+    }
+  },
+  "nasi-goreng": {
+    "ru": {
+      "name": "Наси горенг",
+      "desc": "Говядина или курица с жареным рисом по-индонезийски, крекер, яйцо-глазунья, соус на основе арахисового масла."
+    }
+  },
+  "butter-chicken": {
+    "ru": {
+      "name": "Баттер чикен",
+      "desc": "Традиционная курица масала в сливочном соусе, рис гхи."
+    }
+  },
+  "tandoor-chicken-biryani": {
+    "ru": {
+      "name": "Куриный бирьяни тандури",
+      "desc": "Бирьяни с курицей, маринованной по рецепту тандури, подаётся с соленьями, папад и райта."
+    }
+  },
+  "kadai-masala": {
+    "ru": {
+      "name": "Кадай масала",
+      "desc": "Курица или говядина в маринаде кадай масала, рис гхи."
+    }
+  },
+  "thai-red-curry": {
+    "ru": {
+      "name": "Тайское красное карри",
+      "desc": "Курица или говядина в красном кокосовом соусе карри, рис на пару."
+    }
+  },
+  "dynamite-shrimp": {
+    "ru": {
+      "name": "Креветки динамит",
+      "desc": "Жареные креветки с домашним соусом динамит."
+    }
+  },
+  "nachos": {
+    "ru": {
+      "name": "Начос",
+      "desc": "Кукурузные чипсы, гуакамоле, чили кон карне, сметана, халапеньо, оливки, сыр моцарелла, сальса."
+    }
+  },
+  "jalapeno-chicken-wings": {
+    "ru": {
+      "name": "Куриные крылышки с халапеньо",
+      "desc": "Хрустящие куриные крылышки в домашнем соусе с халапеньо."
+    }
+  },
+  "french-dip-slider": {
+    "ru": {
+      "name": "Слайдер French Dip",
+      "desc": "Говядина, салат латук, сыр чеддер, соус для слайдеров, карамелизированный лук."
+    }
+  },
+  "homemade-chicken-nuggets": {
+    "ru": {
+      "name": "Домашние куриные наггетсы",
+      "desc": "Свежеприготовленное куриное филе, подаётся с картофелем фри."
+    }
+  },
+  "bacon-wrapped-steak-bites": {
+    "ru": {
+      "name": "Кусочки стейка в беконе",
+      "desc": "Рубленая говядина с сыром эмменталь, обёрнутая беконом, в соусе барбекю."
+    }
+  },
+  "buffalo-popcorn-chicken": {
+    "ru": {
+      "name": "Куриный попкорн буффало",
+      "desc": "Небольшие кусочки хрустящей жареной курицы с острым соусом буффало, украшено зелёным луком."
+    }
+  },
+  "pulled-smoked-beef-sandwich": {
+    "ru": {
+      "name": "Сэндвич с тушёной копчёной говядиной",
+      "desc": "Тушёная говядина, карамелизированный лук, сыр эмменталь на мультизерновом хлебе, подаётся с картофельными дольками и коулслоу."
+    }
+  },
+  "chicken-avocado-panini-sandwich": {
+    "ru": {
+      "name": "Панини с курицей и авокадо",
+      "desc": "Панини с авокадо, курицей и фирменным соусом шефа."
+    }
+  },
+  "quesadilla": {
+    "ru": {
+      "name": "Кесадилья",
+      "desc": "Тортилья с курицей, расплавленным сыром, перцем чили, подаётся с гуакамоле, сальсой, сметаной и картофелем фри."
+    }
+  },
+  "beef-tenderloin-steak-sandwich": {
+    "ru": {
+      "name": "Сэндвич со стейком из говяжьей вырезки",
+      "desc": "Стейк из говяжьей вырезки с обжаренным луком, грибами, расплавленным сыром, чесночно-горчичным майонезом и копчёным соусом халапеньо, подаётся с картофелем фри."
+    }
+  },
+  "classic-club-sandwich": {
+    "ru": {
+      "name": "Классический клаб-сэндвич",
+      "desc": "Куриный салат, бекон, яичница, томат, салат латук, сыр и картофель фри."
+    }
+  },
+  "bacon-cheese-beef-burger": {
+    "ru": {
+      "name": "Бургер с говядиной, беконом и сыром",
+      "desc": "Котлета из говядины ангус с расплавленным чеддером и американским сыром, хрустящий говяжий бекон и секретный соус, подаётся с картофелем фри."
+    }
+  },
+  "korean-crispy-fried-chicken-burger": {
+    "ru": {
+      "name": "Бургер с хрустящей курицей по-корейски",
+      "desc": "Хрустящая жареная курица с халапеньо, капустным слоу в соусе шрирача-айоли, подаётся с картофелем фри."
+    }
+  },
+  "chicken-shawarma": {
+    "ru": {
+      "name": "Куриная шаурма",
+      "desc": "Курица, маринованная для шаурмы, маринованный огурец, картофель фри, салат латук, чесночный соус в лепёшке маргук, подаётся с картофелем фри."
+    }
+  },
+  "honey-mustard-chicken-sandwich": {
+    "ru": {
+      "name": "Сэндвич с курицей в медово-горчичном соусе",
+      "desc": "Куриная грудка гриль, бекон, сыр чеддер, медово-горчичный соус, картофель фри."
+    }
+  },
+  "felafel-wrap": {
+    "ru": {
+      "name": "Ролл с фалафелем",
+      "desc": "Фалафель, салат латук, маринованный огурец с соусом тахини в лепёшке маргук, подаётся с картофелем фри."
+    }
+  },
+  "tuna-sandwich": {
+    "ru": {
+      "name": "Сэндвич с тунцом",
+      "desc": "Тунец, томат, огурец в тостовом хлебе с картофелем фри."
+    }
+  },
+  "chicken-fajita-pizza": {
+    "ru": {
+      "name": "Пицца с курицей фахита",
+      "desc": "Томатный соус, острая курица, сыр, болгарский перец, халапеньо, соус фахита."
+    }
+  },
+  "dynamite-chicken-pizza": {
+    "ru": {
+      "name": "Пицца с курицей динамит",
+      "desc": "Курица, моцарелла, соус динамит."
+    }
+  },
+  "marinara-meatballs-pizza": {
+    "ru": {
+      "name": "Пицца с фрикадельками маринара",
+      "desc": "Рубленое мясо, сыр моцарелла, соус маринара."
+    }
+  },
+  "classic-margarita": {
+    "ru": {
+      "name": "Классическая Маргарита",
+      "desc": "Томатный соус, моцарелла, базилик."
+    }
+  },
+  "peri-peri-chicken-pizza": {
+    "ru": {
+      "name": "Пицца с курицей пери-пери",
+      "desc": "Курица гриль пери-пери, моцарелла, томатный соус, лук, болгарский перец."
+    }
+  },
+  "veg-pizza": {
+    "ru": {
+      "name": "Овощная пицца",
+      "desc": "Моцарелла, грибы, перец, лук, оливки."
+    }
+  },
+  "hawaiian-pizza": {
+    "ru": {
+      "name": "Гавайская пицца",
+      "desc": "Говяжья пепперони, моцарелла, ананас, томатный соус."
+    }
+  },
+  "four-cheese-pizza": {
+    "ru": {
+      "name": "Пицца четыре сыра",
+      "desc": "Моцарелла, чеддер, акави, пармезан, томатный соус."
+    }
+  },
+  "bistro-shrimp-pasta": {
+    "ru": {
+      "name": "Паста с креветками по-бистро",
+      "desc": "Обжаренные креветки, свежие грибы, томат и руккола со спагетти в сливочном соусе с базиликом, чесноком и лимоном."
+    }
+  },
+  "pad-thai-noodles": {
+    "ru": {
+      "name": "Лапша Пад Тай",
+      "desc": "Доступен вегетарианский вариант или с курицей."
+    }
+  },
+  "tom-yum-soup": {
+    "ru": {
+      "name": "Суп Том Ям",
+      "desc": "Классический тайский острый и кислый суп."
+    }
+  },
+  "beef-broth-soup": {
+    "ru": {
+      "name": "Бульон из говядины",
+      "desc": "Говяжий бульон долгой варки."
+    }
+  },
+  "chicken-corn-soup": {
+    "ru": {
+      "name": "Куриный суп с кукурузой",
+      "desc": "Кремовый суп с курицей и сладкой кукурузой."
+    }
+  },
+  "texas-chilli-chicken-soup": {
+    "ru": {
+      "name": "Техасский острый куриный суп",
+      "desc": "Острый куриный суп чили."
+    }
+  },
+  "lentil-soup": {
+    "ru": {
+      "name": "Чечевичный суп",
+      "desc": "Классический ближневосточный чечевичный суп."
+    }
+  },
+  "creamy-spinach": {
+    "ru": {
+      "name": "Шпинат в сливочном соусе",
+      "desc": "Тушёный шпинат в лёгком сливочном соусе."
+    }
+  },
+  "mashed-potato": {
+    "ru": {
+      "name": "Картофельное пюре",
+      "desc": "Классическое сливочное картофельное пюре."
+    }
+  },
+  "saute-vegetable": {
+    "ru": {
+      "name": "Овощи соте",
+      "desc": "Сезонные овощи, слегка обжаренные."
+    }
+  },
+  "french-fries": {
+    "ru": {
+      "name": "Картофель фри",
+      "desc": "Хрустящий золотистый картофель фри."
+    }
+  },
+  "potato-wedges": {
+    "ru": {
+      "name": "Картофельные дольки",
+      "desc": "Приправленные картофельные дольки."
+    }
+  },
+  "fried-rice": {
+    "ru": {
+      "name": "Жареный рис",
+      "desc": "Классический рис, жаренный в воке."
+    }
+  },
+  "steamed-rice": {
+    "ru": {
+      "name": "Рис на пару",
+      "desc": "Простой рис на пару."
+    }
+  },
+  "vanilla-cream-brulee": {
+    "ru": {
+      "name": "Ванильный крем-брюле",
+      "desc": "Классический ванильный крем с карамелизированной сахарной корочкой."
+    }
+  },
+  "apple-pie": {
+    "ru": {
+      "name": "Яблочный пирог",
+      "desc": "Тёплый пряный яблочный пирог."
+    }
+  },
+  "chocolate-brownies": {
+    "ru": {
+      "name": "Шоколадные брауни",
+      "desc": "Насыщенные шоколадные квадратики брауни."
+    }
+  },
+  "red-velvet-cheese-cake": {
+    "ru": {
+      "name": "Чизкейк «Красный бархат»",
+      "desc": "Чизкейк красный бархат со сливочно-сырной глазурью."
+    }
+  },
+  "blueberry-cobbler-cake": {
+    "ru": {
+      "name": "Пирог-коблер с черникой",
+      "desc": "Тёплый черничный пирог коблер."
+    }
+  },
+  "panna-cotta": {
+    "ru": {
+      "name": "Панна-котта",
+      "desc": "Нежный итальянский сливочный десерт."
+    }
+  },
+  "ice-cream": {
+    "ru": {
+      "name": "Мороженое",
+      "desc": "На выбор из классических вкусов."
+    }
+  },
+  "crepe": {
+    "ru": {
+      "name": "Крепы",
+      "desc": "На выбор начинка: нутелла, фисташка или карамель."
+    }
+  },
+  "your-choice-of-pancake": {
+    "ru": {
+      "name": "Панкейки на выбор",
+      "desc": "На выбор топпинг: нутелла, мёд или карамель."
+    }
+  },
+  "mocha-frappe": {
+    "ru": {
+      "name": "Фраппе мокко",
+      "desc": "Взбитый кофе с шоколадом."
+    }
+  },
+  "caramel-frappe": {
+    "ru": {
+      "name": "Карамельный фраппе",
+      "desc": "Взбитый кофе с карамелью."
+    }
+  },
+  "vanilla-frappe": {
+    "ru": {
+      "name": "Ванильный фраппе",
+      "desc": "Взбитый кофе с ванилью."
+    }
+  },
+  "cold-coffee": {
+    "ru": {
+      "name": "Холодный кофе",
+      "desc": "Охлаждённый кофе со льдом."
+    }
+  },
+  "cappuccino": {
+    "ru": {
+      "name": "Капучино",
+      "desc": "Эспрессо с взбитой молочной пенкой."
+    }
+  },
+  "american-coffee": {
+    "ru": {
+      "name": "Американо",
+      "desc": "Классический фильтрованный чёрный кофе."
+    }
+  },
+  "hot-chocolate": {
+    "ru": {
+      "name": "Горячий шоколад",
+      "desc": "Насыщенный горячий шоколад."
+    }
+  },
+  "cafe-late": {
+    "ru": {
+      "name": "Кафе латте",
+      "desc": "Эспрессо с горячим молоком."
+    }
+  },
+  "espresso": {
+    "ru": {
+      "name": "Эспрессо",
+      "desc": "Одна порция эспрессо."
+    }
+  },
+  "tea": {
+    "ru": {
+      "name": "Чай",
+      "desc": "Классический заваренный чай."
+    }
+  },
+  "pinacolada": {
+    "ru": {
+      "name": "Пина колада",
+      "desc": "Смесь ананаса и кокоса, безалкогольная."
+    }
+  },
+  "fresh-orange-juice": {
+    "ru": {
+      "name": "Свежевыжатый апельсиновый сок",
+      "desc": "Свежевыжатый апельсиновый сок."
+    }
+  },
+  "fresh-cocktail-juice": {
+    "ru": {
+      "name": "Свежий фруктовый коктейль",
+      "desc": "Смесь свежих фруктов."
+    }
+  },
+  "lemon-with-mint": {
+    "ru": {
+      "name": "Лимон с мятой",
+      "desc": "Свежий сок лимона с мятой."
+    }
+  },
+  "pineapple-with-ginger": {
+    "ru": {
+      "name": "Ананас с имбирём",
+      "desc": "Ананасовый сок со свежим имбирём."
+    }
+  },
+  "mango-mania": {
+    "ru": {
+      "name": "Манго Мания",
+      "desc": "Смесь свежего манго."
+    }
+  },
+  "banana-oats-smoothie": {
+    "ru": {
+      "name": "Смузи банан-овсянка",
+      "desc": "Смузи из банана и овсянки."
+    }
+  },
+  "avocado-smoothie": {
+    "ru": {
+      "name": "Смузи из авокадо",
+      "desc": "Кремовый смузи из авокадо."
+    }
+  },
+  "mango-and-almond-smoothie": {
+    "ru": {
+      "name": "Смузи манго-миндаль",
+      "desc": "Смузи из манго и миндаля."
+    }
+  },
+  "watermelon-smoothie": {
+    "ru": {
+      "name": "Смузи из арбуза",
+      "desc": "Освежающий смузи из арбуза."
+    }
+  },
+  "milkshake": {
+    "ru": {
+      "name": "Молочный коктейль",
+      "desc": "Классический молочный коктейль."
+    }
+  },
+  "classic-mojito": {
+    "ru": {
+      "name": "Классический мохито",
+      "desc": "Безалкогольный мохито с мятой и лаймом."
+    }
+  },
+  "mix-berries-mojito": {
+    "ru": {
+      "name": "Мохито с ягодами",
+      "desc": "Безалкогольный мохито с ягодным миксом."
+    }
+  },
+  "strawberry-mojito": {
+    "ru": {
+      "name": "Клубничный мохито",
+      "desc": "Безалкогольный мохито с клубникой."
+    }
+  },
+  "blueberry-mojito": {
+    "ru": {
+      "name": "Черничный мохито",
+      "desc": "Безалкогольный мохито с черникой."
+    }
+  },
+  "ice-tea": {
+    "ru": {
+      "name": "Холодный чай",
+      "desc": "Охлаждённый чай со льдом."
+    }
+  },
+  "coke-7up-pepsi-diet": {
+    "ru": {
+      "name": "Кола / 7Up / Пепси / Диет",
+      "desc": "На выбор безалкогольный напиток."
+    }
+  },
+  "perrier-small": {
+    "ru": {
+      "name": "Перье, маленькая",
+      "desc": "Газированная вода, маленькая бутылка."
+    }
+  },
+  "perrier-medium": {
+    "ru": {
+      "name": "Перье, средняя",
+      "desc": "Газированная вода, средняя бутылка."
+    }
+  },
+  "perrier-large": {
+    "ru": {
+      "name": "Перье, большая",
+      "desc": "Газированная вода, большая бутылка."
+    }
+  },
+  "small-water": {
+    "ru": {
+      "name": "Вода, маленькая",
+      "desc": "Негазированная вода в бутылке, маленькая."
+    }
+  },
+  "large-water": {
+    "ru": {
+      "name": "Вода, большая",
+      "desc": "Негазированная вода в бутылке, большая."
+    }
+  },
+  "soda": {
+    "ru": {
+      "name": "Содовая",
+      "desc": "Клубная содовая."
+    }
+  },
+  "beer-non-alcoholic": {
+    "ru": {
+      "name": "Пиво (безалкогольное)",
+      "desc": "Безалкогольный солодовый напиток."
+    }
+  },
+  "tonic-water-small": {
+    "ru": {
+      "name": "Тоник, маленький",
+      "desc": "Тоник, маленькая бутылка."
+    }
+  },
+  "tonic-water-large": {
+    "ru": {
+      "name": "Тоник, большой",
+      "desc": "Тоник, большая бутылка."
+    }
+  }
+};
+  // === I18N DATA END ===
+
+  function applyTranslation(lang){
+    document.documentElement.lang = lang;
+    document.documentElement.dataset.lang = lang;
+
+    const swapText = (selector, dict, keyFn) => {
+      document.querySelectorAll(selector).forEach(el => {
+        if(el.dataset.en === undefined) el.dataset.en = el.textContent;
+        const key = keyFn(el);
+        const table = dict[lang];
+        el.textContent = (table && table[key]) || el.dataset.en;
+      });
+    };
+
+    swapText('[data-i18n]', translations, el => el.getAttribute('data-i18n'));
+    swapText('[data-i18n-cat]', catTranslations, el => el.getAttribute('data-i18n-cat'));
+    swapText('[data-i18n-tab]', tabTranslations, el => el.getAttribute('data-i18n-tab'));
+    swapText('[data-i18n-tag]', tagTranslations, el => el.getAttribute('data-i18n-tag'));
+
+    document.querySelectorAll('.item-card[data-slug]').forEach(card => {
+      const slug = card.dataset.slug;
+      const nameEl = card.querySelector('.item-name');
+      const descEl = card.querySelector('.item-desc');
+      if(nameEl.dataset.en === undefined) nameEl.dataset.en = nameEl.textContent;
+      if(descEl.dataset.en === undefined) descEl.dataset.en = descEl.textContent;
+      const entry = itemTranslations[slug];
+      const t = entry && entry[lang];
+      nameEl.textContent = (t && t.name) || nameEl.dataset.en;
+      descEl.textContent = (t && t.desc) || descEl.dataset.en;
+    });
+  }
+
+  // Filter chips: cycle any -> include -> exclude -> any
+  const stateOrder = { any: 'include', include: 'exclude', exclude: 'any' };
+  const stateIcon = { any: '', include: '✓', exclude: '✕' };
+  const filterState = {};
+
+  function applyFilters(){
+    document.querySelectorAll('.category-block').forEach(block => {
+      let anyVisible = false;
+      const cards = block.querySelectorAll('.item-card');
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(' ').filter(Boolean);
+        let visible = true;
+        Object.keys(filterState).forEach(key => {
+          const state = filterState[key];
+          if(state === 'include' && !tags.includes(key)) visible = false;
+          if(state === 'exclude' && tags.includes(key)) visible = false;
+        });
+        card.classList.toggle('hidden-by-filter', !visible);
+        if(visible) anyVisible = true;
+      });
+      const noResults = block.querySelector('.no-results');
+      if(noResults){
+        noResults.classList.toggle('show', cards.length > 0 && !anyVisible);
+      }
+    });
+  }
+
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const key = chip.dataset.filter;
+      const current = chip.dataset.state;
+      const next = stateOrder[current];
+      chip.dataset.state = next;
+      chip.querySelector('.icon').textContent = stateIcon[next];
+      if(next === 'any') delete filterState[key];
+      else filterState[key] = next;
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyTranslation(btn.dataset.lang);
+    });
+  });
+</script>
+
+</body>
+</html>
