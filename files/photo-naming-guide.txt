@@ -1,0 +1,179 @@
+SEDER PALMS RESTAURANT — PHOTO NAMING GUIDE
+==================================================
+
+Save every photo as a .jpg file using the exact filename below.
+Drop all files into a folder named 'photos' next to the menu HTML file.
+Filenames are case-sensitive and must match exactly.
+
+
+[FOOD]
+
+  Breakfast:
+    American Steak Breakfast  ->  photos/american-steak-breakfast.jpg
+    English Breakfast Platter  ->  photos/english-breakfast-platter.jpg
+    Hash Brown Egg Benedict  ->  photos/hash-brown-egg-benedict.jpg
+    Avocado Toast With Poached Egg  ->  photos/avocado-toast-with-poached-egg.jpg
+    Your Choice Omelette  ->  photos/your-choice-omelette.jpg
+    Philly Steak Omelette  ->  photos/philly-steak-omelette.jpg
+    Egg Any Style  ->  photos/egg-any-style.jpg
+    Egg N Bun  ->  photos/egg-n-bun.jpg
+    Chicken Schnitzel  ->  photos/chicken-schnitzel.jpg
+    Shakshuka Slider  ->  photos/shakshuka-slider.jpg
+
+  Salad:
+    Crispy Quinoa Salad  ->  photos/crispy-quinoa-salad.jpg
+    Cobb Salmon Salad  ->  photos/cobb-salmon-salad.jpg
+    Signature Steak Salad  ->  photos/signature-steak-salad.jpg
+    The Greek Salad  ->  photos/the-greek-salad.jpg
+    Falafel Salad  ->  photos/falafel-salad.jpg
+    Shrimp Cocktail Avocado Salad  ->  photos/shrimp-cocktail-avocado-salad.jpg
+    Classic Waldorf Salad  ->  photos/classic-waldorf-salad.jpg
+    Exotic Rocca Salad  ->  photos/exotic-rocca-salad.jpg
+    Fattoush Salad  ->  photos/fattoush-salad.jpg
+    Caesar Chicken Salad  ->  photos/caesar-chicken-salad.jpg
+    Hummus  ->  photos/hummus.jpg
+
+  Main Course:
+    Grilled Chicken Breast  ->  photos/grilled-chicken-breast.jpg
+    Chicken Parmigiana  ->  photos/chicken-parmigiana.jpg
+    Chicken Marsala & Mushrooms  ->  photos/chicken-marsala-and-mushrooms.jpg
+    Crispy Honey Lemon Chicken  ->  photos/crispy-honey-lemon-chicken.jpg
+    Country Fried Chicken  ->  photos/country-fried-chicken.jpg
+    Chilli Chicken  ->  photos/chilli-chicken.jpg
+    Steak Tenderloin  ->  photos/steak-tenderloin.jpg
+    Beef Roulade  ->  photos/beef-roulade.jpg
+    Mongolian Beef  ->  photos/mongolian-beef.jpg
+    Grilled Lamb Chops  ->  photos/grilled-lamb-chops.jpg
+    Rib Eye Steak  ->  photos/rib-eye-steak.jpg
+    Smoked Ribs  ->  photos/smoked-ribs.jpg
+    Braised Lamb Shank  ->  photos/braised-lamb-shank.jpg
+    Beef Stroganoff  ->  photos/beef-stroganoff.jpg
+    Arabic Mixed Grill  ->  photos/arabic-mixed-grill.jpg
+    Peri Peri Chicken  ->  photos/peri-peri-chicken.jpg
+    Grilled Rosemary Salmon  ->  photos/grilled-rosemary-salmon.jpg
+    Tepanyaki Salmon  ->  photos/tepanyaki-salmon.jpg
+    Lobster Thermidor  ->  photos/lobster-thermidor.jpg
+    Fish & Chips  ->  photos/fish-and-chips.jpg
+    Grilled Seafood Platter  ->  photos/grilled-seafood-platter.jpg
+    Sriracha Grilled Shrimp  ->  photos/sriracha-grilled-shrimp.jpg
+    Nasi Goreng  ->  photos/nasi-goreng.jpg
+    Butter Chicken  ->  photos/butter-chicken.jpg
+    Tandoor Chicken Biryani  ->  photos/tandoor-chicken-biryani.jpg
+    Kadai Masala  ->  photos/kadai-masala.jpg
+    Thai Red Curry  ->  photos/thai-red-curry.jpg
+
+  Appetizer:
+    Dynamite Shrimp  ->  photos/dynamite-shrimp.jpg
+    Nachos  ->  photos/nachos.jpg
+    Jalapeno Chicken Wings  ->  photos/jalapeno-chicken-wings.jpg
+    French Dip Slider  ->  photos/french-dip-slider.jpg
+    Homemade Chicken Nuggets  ->  photos/homemade-chicken-nuggets.jpg
+    Bacon Wrapped Steak Bites  ->  photos/bacon-wrapped-steak-bites.jpg
+    Buffalo Popcorn Chicken  ->  photos/buffalo-popcorn-chicken.jpg
+
+  Sandwiches:
+    Pulled Smoked Beef Sandwich  ->  photos/pulled-smoked-beef-sandwich.jpg
+    Chicken Avocado Panini Sandwich  ->  photos/chicken-avocado-panini-sandwich.jpg
+    Quesadilla  ->  photos/quesadilla.jpg
+    Beef Tenderloin Steak Sandwich  ->  photos/beef-tenderloin-steak-sandwich.jpg
+    Classic Club Sandwich  ->  photos/classic-club-sandwich.jpg
+    Bacon Cheese Beef Burger  ->  photos/bacon-cheese-beef-burger.jpg
+    Korean Crispy Fried Chicken Burger  ->  photos/korean-crispy-fried-chicken-burger.jpg
+    Chicken Shawarma  ->  photos/chicken-shawarma.jpg
+    Honey Mustard Chicken Sandwich  ->  photos/honey-mustard-chicken-sandwich.jpg
+    Felafel Wrap  ->  photos/felafel-wrap.jpg
+    Tuna Sandwich  ->  photos/tuna-sandwich.jpg
+
+  Pizza:
+    Chicken Fajita Pizza  ->  photos/chicken-fajita-pizza.jpg
+    Dynamite Chicken Pizza  ->  photos/dynamite-chicken-pizza.jpg
+    Marinara Meatballs Pizza  ->  photos/marinara-meatballs-pizza.jpg
+    Classic Margarita  ->  photos/classic-margarita.jpg
+    Peri Peri Chicken Pizza  ->  photos/peri-peri-chicken-pizza.jpg
+    Veg Pizza  ->  photos/veg-pizza.jpg
+    Hawaiian Pizza  ->  photos/hawaiian-pizza.jpg
+    Four Cheese Pizza  ->  photos/four-cheese-pizza.jpg
+
+  Create Your Own Pasta:
+    Bistro Shrimp Pasta  ->  photos/bistro-shrimp-pasta.jpg
+    Pad Thai Noodles  ->  photos/pad-thai-noodles.jpg
+
+  Soup:
+    Tom Yum Soup  ->  photos/tom-yum-soup.jpg
+    Beef Broth Soup  ->  photos/beef-broth-soup.jpg
+    Chicken Corn Soup  ->  photos/chicken-corn-soup.jpg
+    Texas Chilli Chicken Soup  ->  photos/texas-chilli-chicken-soup.jpg
+    Lentil Soup  ->  photos/lentil-soup.jpg
+
+  Sides:
+    Creamy Spinach  ->  photos/creamy-spinach.jpg
+    Mashed Potato  ->  photos/mashed-potato.jpg
+    Saute Vegetable  ->  photos/saute-vegetable.jpg
+    French Fries  ->  photos/french-fries.jpg
+    Potato Wedges  ->  photos/potato-wedges.jpg
+    Fried Rice  ->  photos/fried-rice.jpg
+    Steamed Rice  ->  photos/steamed-rice.jpg
+
+[DESSERT]
+
+  Dessert Menu:
+    Vanilla Cream Brulee  ->  photos/vanilla-cream-brulee.jpg
+    Apple Pie  ->  photos/apple-pie.jpg
+    Chocolate Brownies  ->  photos/chocolate-brownies.jpg
+    Red Velvet Cheese Cake  ->  photos/red-velvet-cheese-cake.jpg
+    Blueberry Cobbler Cake  ->  photos/blueberry-cobbler-cake.jpg
+    Panna Cotta  ->  photos/panna-cotta.jpg
+    Ice Cream  ->  photos/ice-cream.jpg
+    Crepe  ->  photos/crepe.jpg
+    Your Choice of Pancake  ->  photos/your-choice-of-pancake.jpg
+
+[BEVERAGES]
+
+  Frappe & Coffee:
+    Mocha Frappe  ->  photos/mocha-frappe.jpg
+    Caramel Frappe  ->  photos/caramel-frappe.jpg
+    Vanilla Frappe  ->  photos/vanilla-frappe.jpg
+    Cold Coffee  ->  photos/cold-coffee.jpg
+    Cappuccino  ->  photos/cappuccino.jpg
+    American Coffee  ->  photos/american-coffee.jpg
+    Hot Chocolate  ->  photos/hot-chocolate.jpg
+    Cafe Late  ->  photos/cafe-late.jpg
+    Espresso  ->  photos/espresso.jpg
+    Tea  ->  photos/tea.jpg
+
+  Fresh Juice:
+    Pinacolada  ->  photos/pinacolada.jpg
+    Fresh Orange Juice  ->  photos/fresh-orange-juice.jpg
+    Fresh Cocktail Juice  ->  photos/fresh-cocktail-juice.jpg
+    Lemon with Mint  ->  photos/lemon-with-mint.jpg
+    Pineapple with Ginger  ->  photos/pineapple-with-ginger.jpg
+    Mango Mania  ->  photos/mango-mania.jpg
+
+  Smoothies:
+    Banana Oats Smoothie  ->  photos/banana-oats-smoothie.jpg
+    Avocado Smoothie  ->  photos/avocado-smoothie.jpg
+    Mango & Almond Smoothie  ->  photos/mango-and-almond-smoothie.jpg
+    Watermelon Smoothie  ->  photos/watermelon-smoothie.jpg
+    Milkshake  ->  photos/milkshake.jpg
+
+  Mojitos:
+    Classic Mojito  ->  photos/classic-mojito.jpg
+    Mix Berries Mojito  ->  photos/mix-berries-mojito.jpg
+    Strawberry Mojito  ->  photos/strawberry-mojito.jpg
+    Blueberry Mojito  ->  photos/blueberry-mojito.jpg
+    Ice Tea  ->  photos/ice-tea.jpg
+
+  Soft Drinks:
+    Coke / 7Up / Pepsi / Diet  ->  photos/coke-7up-pepsi-diet.jpg
+    Perrier Small  ->  photos/perrier-small.jpg
+    Perrier Medium  ->  photos/perrier-medium.jpg
+    Perrier Large  ->  photos/perrier-large.jpg
+    Small Water  ->  photos/small-water.jpg
+    Large Water  ->  photos/large-water.jpg
+    Soda  ->  photos/soda.jpg
+    Beer (Non-Alcoholic)  ->  photos/beer-non-alcoholic.jpg
+    Tonic Water Small  ->  photos/tonic-water-small.jpg
+    Tonic Water Large  ->  photos/tonic-water-large.jpg
+
+
+Total photos needed: 133

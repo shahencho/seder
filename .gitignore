@@ -1,0 +1,13 @@
+# Deployment scripts and configs from other projects
+reference/
+
+# OS and editor
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Archives
+*.zip
